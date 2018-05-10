@@ -21,7 +21,7 @@ class DataInput extends Component {
             <ChildRisk />
             <EnvRisk />
           </div>
-          <div>
+          <div className="risk-factors" >
             <ChildProtect />
             < EnvProtect />
           </div>

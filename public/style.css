@@ -19,12 +19,40 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
 .topline {
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .factor-details {
   margin-left: 5px;
-  width: 30em;
+  width: 20em;
+  position: relative;
+  right: 0px;
+  justify-content: space-between;
+  word-wrap: normal;
+}
+
+input.break {
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 80px;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  height: 2em;
+}
+
+.risk-factors {
+  display: flex;
+  /* justify-content: space-around */
+}
+
+.notes-box {
+  margin-left: 5px;
+  width: 80%;
+  height: 20em;
 }
