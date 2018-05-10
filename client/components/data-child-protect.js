@@ -99,7 +99,11 @@ const ChildProtect = () => {
       </div>
       <div className="line">
         Notes:
-        <textarea className="notes-box" name="child-protect-notes" />
+        <textarea
+          className="notes-box"
+          name="child-protect-notes"
+          id="notes-one"
+        />
       </div>
     </div>
   );
