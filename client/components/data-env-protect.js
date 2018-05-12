@@ -5,12 +5,12 @@ const EnvProtect = () => {
     <div>
       <h2>Environment Protective Factors Observed</h2>
       <div className="line">
-        <input type="checkbox" name="good-caregiver" />
+        <input type="checkbox" name="goodCaregiver" />
         Good Relationship with at Least One Caring and Consistent Caregiver
         <textarea
           wrap="soft"
           className="factor-details"
-          name="good-caregiver-text"
+          name="goodCaregiverText"
         />
       </div>
       <div className="line">
@@ -19,13 +19,13 @@ const EnvProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="supervision-text"
+          name="supervisionText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="extended" />
         Extended Family Support
-        <textarea wrap="soft" className="factor-details" name="extended-text" />
+        <textarea wrap="soft" className="factor-details" name="extendedText" />
       </div>
       <div className="line">
         <input type="checkbox" name="traditions" />
@@ -33,7 +33,7 @@ const EnvProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="traditions-text"
+          name="traditionsText"
         />
       </div>
       <div className="line">
@@ -42,7 +42,7 @@ const EnvProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="community-text"
+          name="communityText"
         />
       </div>
       <div className="line">
@@ -51,7 +51,7 @@ const EnvProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="resources-text"
+          name="resourcesText"
         />
       </div>
       <div className="line">
@@ -60,16 +60,16 @@ const EnvProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="family-stress-text"
+          name="familyStressText"
         />
       </div>
       <div className="line">
-        <input type="checkbox" name="family-violence" />
+        <input type="checkbox" name="familyViolence" />
         No Family Violence in the Home
         <textarea
           wrap="soft"
           className="factor-details"
-          name="family-violence-text"
+          name="familyViolenceText"
         />
       </div>
     </div>

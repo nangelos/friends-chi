@@ -371,6 +371,63 @@ const Data = db.define('data', {
   childProtectNotes: {
     type: Sequelize.TEXT,
   },
+  //Environment Protective Factors
+  goodCaregiver: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  goodCaregiverText: {
+    type: Sequelize.STRING,
+  },
+  supervision: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  supervisionText: {
+    type: Sequelize.STRING,
+  },
+  extended: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  extendedText: {
+    type: Sequelize.STRING,
+  },
+  traditions: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  traditionsText: {
+    type: Sequelize.STRING,
+  },
+  community: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  communityText: {
+    type: Sequelize.STRING,
+  },
+  resources: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  resourcesText: {
+    type: Sequelize.STRING,
+  },
+  familyStress: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  familyStressText: {
+    type: Sequelize.STRING,
+  },
+  familyViolence: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  familyViolenceText: {
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = Data;
