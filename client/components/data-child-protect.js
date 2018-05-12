@@ -10,21 +10,21 @@ const ChildProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="intelligent-text"
+          name="intelligentText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="efficacy" />
         Demonstrates Self-Efficacy
-        <textarea wrap="soft" className="factor-details" name="efficacy-text" />
+        <textarea wrap="soft" className="factor-details" name="efficacyText" />
       </div>
       <div className="line">
-        <input type="checkbox" name="protect-esteem" />
+        <input type="checkbox" name="protectEsteem" />
         Healthy Self Exteem
         <textarea
           wrap="soft"
           className="factor-details"
-          name="protect-esteem-text"
+          name="protectEsteemText"
         />
       </div>
       <div className="line">
@@ -33,7 +33,7 @@ const ChildProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="interpersonal-text"
+          name="interpersonalText"
         />
       </div>
       <div className="line">
@@ -42,7 +42,7 @@ const ChildProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="initiative-text"
+          name="initiativeText"
         />
       </div>
       <div className="line">
@@ -51,18 +51,18 @@ const ChildProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="frustration-text"
+          name="frustrationText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="soothe" />
         Ability to Self-soothe
-        <textarea wrap="soft" className="factor-details" name="soothe-text" />
+        <textarea wrap="soft" className="factor-details" name="sootheText" />
       </div>
       <div className="line">
         <input type="checkbox" name="help" />
         Seeks Help/Support
-        <textarea wrap="soft" className="factor-details" name="help-text" />
+        <textarea wrap="soft" className="factor-details" name="helpText" />
       </div>
       <div className="line">
         <input type="checkbox" name="temperament" />
@@ -70,38 +70,38 @@ const ChildProtect = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="temperament-text"
+          name="temperamentText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="hope" />
         Has a Sense of Hope
-        <textarea wrap="soft" className="factor-details" name="hope-text" />
+        <textarea wrap="soft" className="factor-details" name="hopeText" />
       </div>
       <div className="line">
         <input type="checkbox" name="trying" />
         Willing to Keep Trying
-        <textarea wrap="soft" className="factor-details" name="trying-text" />
+        <textarea wrap="soft" className="factor-details" name="tryingText" />
       </div>
       <div className="line">
-        <input type="checkbox" name="likes-school" />
+        <input type="checkbox" name="likesSchool" />
         Likes School/Wants to Be There
         <textarea
           wrap="soft"
           className="factor-details"
-          name="likes-school-text"
+          name="likesSchoolText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="humor" />
         Has a Sense of Humor
-        <textarea wrap="soft" className="factor-details" name="humor-text" />
+        <textarea wrap="soft" className="factor-details" name="humorText" />
       </div>
       <div className="line">
         Notes:
         <textarea
           className="notes-box"
-          name="child-protect-notes"
+          name="childProtectNotes"
           id="notes-one"
         />
       </div>

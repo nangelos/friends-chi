@@ -5,47 +5,47 @@ const EnvRisk = () => {
     <div>
       <h2>Environment Risk Factors Observed</h2>
       <div className="line">
-        <input type="checkbox" name="single-parent" />
+        <input type="checkbox" name="singleParent" />
         Single Parent Family
         <textarea
           wrap="soft"
           className="factor-details"
-          name="single-parent-text"
+          name="singleParentText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="poverty" />
         Living in Poverty
-        <textarea wrap="soft" className="factor-details" name="poverty-text" />
+        <textarea wrap="soft" className="factor-details" name="povertyText" />
       </div>
       <div className="line">
-        <input type="checkbox" name="teen-parent" />
+        <input type="checkbox" name="teenParent" />
         Parent Was a Teen Parent
         <textarea
           wrap="soft"
           className="factor-details"
-          name="teen-parent-text"
+          name="teenParentText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="neglect" />
         History of Neglect
-        <textarea wrap="soft" className="factor-details" name="neglect-text" />
+        <textarea wrap="soft" className="factor-details" name="neglectText" />
       </div>
       <div className="line">
         <input type="checkbox" name="abuse" />
         Physical/Sexual Abuse
-        <textarea wrap="soft" className="factor-details" name="abuse-text" />
+        <textarea wrap="soft" className="factor-details" name="abuseText" />
       </div>
       <div className="line">
         <input type="checkbox" name="foster" />
         In Foster Care
-        <textarea wrap="soft" className="factor-details" name="foster-text" />
+        <textarea wrap="soft" className="factor-details" name="fosterText" />
       </div>
       <div className="line">
         <input type="checkbox" name="drugs" />
         Fam History of Drug/Alcohol Abuse
-        <textarea wrap="soft" className="factor-details" name="drugs-text" />
+        <textarea wrap="soft" className="factor-details" name="drugsText" />
       </div>
       <div className="line">
         <input type="checkbox" name="substance" />
@@ -53,23 +53,23 @@ const EnvRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="substance-text"
+          name="substanceText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="violence" />
         Domestic Violence in Home
-        <textarea wrap="soft" className="factor-details" name="violence-text" />
+        <textarea wrap="soft" className="factor-details" name="violenceText" />
       </div>
       <div className="line">
         <input type="checkbox" name="conflict" />
         Ongoing Family Conflict
-        <textarea wrap="soft" className="factor-details" name="conflict-text" />
+        <textarea wrap="soft" className="factor-details" name="conflictText" />
       </div>
       <div className="line">
         <input type="checkbox" name="criminal" />
         Parent Criminal History
-        <textarea wrap="soft" className="factor-details" name="criminal-text" />
+        <textarea wrap="soft" className="factor-details" name="criminalText" />
       </div>
       <div className="line">
         <input type="checkbox" name="incarceration" />
@@ -77,30 +77,30 @@ const EnvRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="incarceration-text"
+          name="incarcerationText"
         />
       </div>
       <div className="line">
-        <input type="checkbox" name="criminal-home" />
+        <input type="checkbox" name="criminalHome" />
         Criminal Activity in Home
         <textarea
           wrap="soft"
           className="factor-details"
-          name="criminal-home-text"
+          name="criminalHomeText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="gang" />
         Family Gang Activity
-        <textarea wrap="soft" className="factor-details" name="gang-text" />
+        <textarea wrap="soft" className="factor-details" name="gangText" />
       </div>
       <div className="line">
-        <input type="checkbox" name="mental-ill" />
+        <input type="checkbox" name="mentalIll" />
         Parent With Mental Illness
         <textarea
           wrap="soft"
           className="factor-details"
-          name="mental-ill-text"
+          name="mentalIllText"
         />
       </div>
       <div className="line">
@@ -109,7 +109,7 @@ const EnvRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="relocation-text"
+          name="relocationText"
         />
       </div>
       <div className="line">
@@ -118,13 +118,13 @@ const EnvRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="education-text"
+          name="educationText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="sibling" />
         Older Sibling with High-Risk Behavior
-        <textarea wrap="soft" className="factor-details" name="sibling-text" />
+        <textarea wrap="soft" className="factor-details" name="siblingText" />
       </div>
       <div className="line">
         <input type="checkbox" name="neighborhood" />
@@ -132,16 +132,16 @@ const EnvRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="neighborhood-text"
+          name="neighborhoodText"
         />
       </div>
       <div className="line">
-        <input type="checkbox" name="delinquent-peers" />
+        <input type="checkbox" name="delinquentPeers" />
         Exposure to Delinquent Peers
         <textarea
           wrap="soft"
           className="factor-details"
-          name="delinquent-peers-text"
+          name="delinquentPeersText"
         />
       </div>
       <div className="line">
@@ -150,7 +150,7 @@ const EnvRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="montoring-text"
+          name="montoringText"
         />
       </div>
     </div>

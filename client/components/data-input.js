@@ -12,9 +12,9 @@ class DataInput extends Component {
         <form>
           <div className="topline">
             Date: <input type="date" name="date" />
-            School: <input type="text" name="school-name" />
-            Observer Name: <input type="text" name="observer-name" />
-            Child Initials: <input type="text" name="child-initials" />
+            School: <input type="text" name="school" />
+            Observer Name: <input type="text" name="observer" />
+            Child Initials: <input type="text" name="childInitials" />
           </div>
           <div className="risk-factors" id="risk-line">
             <ChildRisk />

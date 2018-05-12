@@ -7,7 +7,7 @@ const ChildRisk = () => {
       <div className="line">
         <input type="checkbox" name="anger" />
         Aggressive Anger Problems
-        <textarea wrap="soft" className="factor-details" name="anger-text" />
+        <textarea wrap="soft" className="factor-details" name="angerText" />
       </div>
       <div className="line">
         <input type="checkbox" name="withdrawal" />
@@ -15,13 +15,13 @@ const ChildRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="withdrawal-text"
+          name="withdrawalText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="esteem" />
         Low Self-Esteem
-        <textarea wrap="soft" className="factor-details" name="esteem-text" />
+        <textarea wrap="soft" className="factor-details" name="esteemText" />
       </div>
       <div className="line">
         <input type="checkbox" name="attendance" />
@@ -29,7 +29,7 @@ const ChildRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="attendance-text"
+          name="attendanceText"
         />
       </div>
       <div className="line">
@@ -38,39 +38,39 @@ const ChildRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="performance-text"
+          name="performanceText"
         />
       </div>
       <div className="line">
-        <input type="checkbox" name="peer-relationships" />
+        <input type="checkbox" name="peerRelationships" />
         Poor Peer Relationships
         <textarea
           wrap="soft"
           className="factor-details"
-          name="peer-relationships-text"
+          name="peerRelationshipsText"
         />
       </div>
       <div className="line">
-        <input type="checkbox" name="adult-relationships" />
+        <input type="checkbox" name="adultRelationships" />
         Poor Adult Relationships
         <textarea
           wrap="soft"
           className="factor-details"
-          name="adult-relationships-text"
+          name="adultRelationshipsText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="hygiene" />
         Poor Hygiene/Health Concerns
-        <textarea wrap="soft" className="factor-details" name="hygiene-text" />
+        <textarea wrap="soft" className="factor-details" name="hygieneText" />
       </div>
       <div className="line">
-        <input type="checkbox" name="sex-behavior" />
+        <input type="checkbox" name="sexBehavior" />
         Sexualized Behavior
         <textarea
           wrap="soft"
           className="factor-details"
-          name="sex-behavior-text"
+          name="sexBehaviorText"
         />
       </div>
       <div className="line">
@@ -79,7 +79,7 @@ const ChildRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="frustrated-text"
+          name="frustratedText"
         />
       </div>
       <div className="line">
@@ -88,13 +88,13 @@ const ChildRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="depression-text"
+          name="depressionText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="cries" />
         Cries Easily/Often
-        <textarea wrap="soft" className="factor-details" name="cries-text" />
+        <textarea wrap="soft" className="factor-details" name="criesText" />
       </div>
       <div className="line">
         <input type="checkbox" name="impulsive" />
@@ -102,17 +102,17 @@ const ChildRisk = () => {
         <textarea
           wrap="soft"
           className="factor-details"
-          name="impulsive-text"
+          name="impulsiveText"
         />
       </div>
       <div className="line">
         <input type="checkbox" name="nervous" />
         Nervous Habits
-        <textarea wrap="soft" className="factor-details" name="nervous-text" />
+        <textarea wrap="soft" className="factor-details" name="nervousText" />
       </div>
       <div className="line">
         Notes:
-        <textarea className="notes-box" name="child-risk-notes" />
+        <textarea className="notes-box" name="childRiskNotes" />
       </div>
     </div>
   );
