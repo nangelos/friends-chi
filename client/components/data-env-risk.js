@@ -145,12 +145,12 @@ const EnvRisk = () => {
         />
       </div>
       <div className="line">
-        <input type="checkbox" name="montoring" />
+        <input type="checkbox" name="monitoring" />
         Lack of Parental Monitoring
         <textarea
           wrap="soft"
           className="factor-details"
-          name="montoringText"
+          name="monitoringText"
         />
       </div>
     </div>
