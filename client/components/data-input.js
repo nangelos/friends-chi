@@ -5,6 +5,12 @@ import ChildProtect from './data-child-protect';
 import EnvProtect from './data-env-protect';
 
 class DataInput extends Component {
+
+  handleSubmit(evt){
+    evt.preventDefault()
+    console.log(evt.target.value)
+  }
+
   render() {
     return (
       <div>
@@ -24,6 +30,7 @@ class DataInput extends Component {
             <ChildProtect />
             <EnvProtect />
           </div>
+          <button onSubmit={this.handleSubmit}>Submit</button>
         </form>
       </div>
     );
