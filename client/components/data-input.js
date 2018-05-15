@@ -3,12 +3,15 @@ import ChildRisk from './data-child-risk';
 import EnvRisk from './data-env-risk';
 import ChildProtect from './data-child-protect';
 import EnvProtect from './data-env-protect';
+import { addData } from '../store/data';
+import { connect } from 'react-redux'
 
 class DataInput extends Component {
 
   handleSubmit(evt){
     evt.preventDefault()
     console.log(evt.target.value)
+    addData(evt.target.value)
   }
 
   render() {
@@ -30,7 +33,7 @@ class DataInput extends Component {
             <ChildProtect />
             <EnvProtect />
           </div>
-          <button onSubmit={this.handleSubmit}>Submit</button>
+          <input type="submit" onSubmit={this.handleSubmit} value="Submit" />
         </form>
       </div>
     );
