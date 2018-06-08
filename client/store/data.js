@@ -1,29 +1,30 @@
 import axios from 'axios';
 import history from '../history';
 
-const ADD_DATA = 'ADD_DATA';
+const CREATE_DATA = 'CREATE_DATA';
 
 const initialState = {
   data: [],
 };
 
-const addData = data => ({ type: ADD_DATA, data });
+const createData = data => ({ type: CREATE_DATA, data });
 
-export const createData = data => {
+export const addData = data => {
   return dispatch => {
+    console.log('in the addData function')
     axios
       .post(data)
       .then(res => {
-        dispatch(addData(res));
+        dispatch(createData(res));
         history.push('/home');
       })
       .catch(err => console.error(err));
   };
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
-    case ADD_DATA:
+    case CREATE_DATA:
       return [...state, action.data];
     default:
       return state;
