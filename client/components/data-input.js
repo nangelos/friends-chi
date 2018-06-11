@@ -16,8 +16,8 @@ class DataInput extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    console.log(evt.target.value)
-    addData(evt.target.value)
+    const { createIssue } = this.props;
+    createIssue(this.state)
   }
 
   handleCheckboxChange = evt => {
@@ -35,32 +35,37 @@ class DataInput extends Component {
       <div>
         <h2>Observation Data</h2>
         <div>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className="topline">
-              Date: <input type="date" name="date" onChange={this.handleTextboxChange} />
-              School: <input type="text" name="school" onChange={this.handleTextboxChange} />
-              Observer Name: <input type="text" name="observer" onChange={this.handleTextboxChange} />
-              Child Initials: <input type="text" name="childInitials" onChange={this.handleTextboxChange} />
+              Date: <input type="date" name="date" onChange={this.handleTextboxChange} value={this.state.date} />
+              School: <input type="text" name="school" onChange={this.handleTextboxChange} value={this.state.school} />
+              Observer Name: <input type="text" name="observer" onChange={this.handleTextboxChange} value={this.state.observer} />
+              Child Initials: <input type="text" name="childInitials" onChange={this.handleTextboxChange} value={this.state.childInitials} />
             </div>
+            <input type="submit" value="Submit" />
           </form>
           <div className="risk-factors" id="risk-line">
             {/* <ChildRisk /> */}
-            <EnvRisk handleCheckboxChange={this.handleCheckboxChange} handleTextboxChange={this.handleTextboxChange} />
+            <EnvRisk
+              handleCheckboxChange={this.handleCheckboxChange}
+              handleTextboxChange={this.handleTextboxChange}
+              handleSubmit={this.handleSubmit} />
           </div>
           {/* <div className="risk-factors" id="protective-line">
             <ChildProtect />
             <EnvProtect />
           </div> */}
-          <input type="submit" onSubmit={this.handleSubmit} value="Submit" />
         </div>
       </div>
     );
   }
 }
 
+const mapState = state => ({ state });
+
 const mapDispatch = dispatch => ({
   createIssue: issue => dispatch(addData(issue)),
 });
 
-export default connect(null, mapDispatch)(DataInput);
+export default connect(mapState, mapDispatch)(DataInput);
 // export default DataInput;

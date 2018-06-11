@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class EnvRisk extends Component {
   constructor() {
@@ -54,7 +55,7 @@ class EnvRisk extends Component {
     return (
       <div>
         <h2>Environment Risk Factors Observed</h2>
-        <form>
+        <form onSubmit={this.props.handleSumbit}>
           <div className="line">
             <input type="checkbox" name="singleParent" onChange={this.props.handleCheckboxChange} />
             Single Parent Family
@@ -212,4 +213,7 @@ class EnvRisk extends Component {
   }
 }
 
-export default EnvRisk;
+const mapState = state => ({ state })
+
+// export default EnvRisk;
+export default connect(mapState, null)(EnvRisk);

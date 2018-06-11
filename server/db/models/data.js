@@ -13,7 +13,7 @@ const Data = db.define('data', {
       notEmpty: true,
     },
   },
-  name: {
+  observer: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {

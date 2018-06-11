@@ -11,11 +11,11 @@ const createData = data => ({ type: CREATE_DATA, data });
 
 export const addData = data => {
   return dispatch => {
-    console.log('in the addData function')
     axios
-      .post(data)
+      .post('/api/data', data)
       .then(res => {
-        dispatch(createData(res));
+        console.log(res)
+        dispatch(createData(res.data));
         history.push('/home');
       })
       .catch(err => console.error(err));
@@ -25,7 +25,7 @@ export const addData = data => {
 export default function (state = initialState, action) {
   switch (action.type) {
     case CREATE_DATA:
-      return [...state, action.data];
+      return { ...state, data: action.data };
     default:
       return state;
   }
