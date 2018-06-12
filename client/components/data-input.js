@@ -42,19 +42,24 @@ class DataInput extends Component {
               Observer Name: <input type="text" name="observer" onChange={this.handleTextboxChange} value={this.state.observer} />
               Child Initials: <input type="text" name="childInitials" onChange={this.handleTextboxChange} value={this.state.childInitials} />
             </div>
+            <div className="risk-factors" id="risk-line">
+              <ChildRisk
+                handleCheckboxChange={this.handleCheckboxChange}
+                handleTextboxChange={this.handleTextboxChange} />
+              <EnvRisk
+                handleCheckboxChange={this.handleCheckboxChange}
+                handleTextboxChange={this.handleTextboxChange} />
+            </div>
+            <div className="risk-factors" id="protective-line">
+              <ChildProtect
+                handleCheckboxChange={this.handleCheckboxChange}
+                handleTextboxChange={this.handleTextboxChange} />
+              <EnvProtect
+                handleCheckboxChange={this.handleCheckboxChange}
+                handleTextboxChange={this.handleTextboxChange} />
+            </div>
             <input type="submit" value="Submit" />
           </form>
-          <div className="risk-factors" id="risk-line">
-            {/* <ChildRisk /> */}
-            <EnvRisk
-              handleCheckboxChange={this.handleCheckboxChange}
-              handleTextboxChange={this.handleTextboxChange}
-              handleSubmit={this.handleSubmit} />
-          </div>
-          {/* <div className="risk-factors" id="protective-line">
-            <ChildProtect />
-            <EnvProtect />
-          </div> */}
         </div>
       </div>
     );

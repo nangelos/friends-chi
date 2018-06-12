@@ -55,7 +55,7 @@ class EnvRisk extends Component {
     return (
       <div>
         <h2>Environment Risk Factors Observed</h2>
-        <form onSubmit={this.props.handleSumbit}>
+        <div>
           <div className="line">
             <input type="checkbox" name="singleParent" onChange={this.props.handleCheckboxChange} />
             Single Parent Family
@@ -207,7 +207,7 @@ class EnvRisk extends Component {
               name="monitoringText" onChange={this.props.handleTextboxChange}
             />
           </div>
-        </form>
+        </div>
       </div>
     );
   }
