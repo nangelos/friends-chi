@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class ChildRisk extends Component {
   state = {
@@ -185,4 +186,6 @@ class ChildRisk extends Component {
   }
 }
 
-export default ChildRisk;
+const mapState = state => ({ state })
+
+export default connect(mapState, null)(ChildRisk);
