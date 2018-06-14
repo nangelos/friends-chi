@@ -20,6 +20,21 @@ class ChildComponent extends Component {
   envProtectFactors = [
     'goodCaregiver', 'goodCaregiverText', 'supervision', 'supervisionText', 'extended', 'extendedText', 'traditions', 'traditionsText', 'community', 'communityText', 'resources', 'resourcesText', 'familyStress', 'familyStressText', 'familyViolence', 'familyViolenceText']
 
+  getCount = (obj, list) => Object.keys(obj)
+    .filter(key => list.includes(key) && obj[key] === true &&
+      !key.includes('Text') && !key.includes('Notes')).length;
+
+  netScore = (childRisk, envRisk, childProtect, envProtect) => -(childRisk + envRisk) + (childProtect + envProtect)
+
+  doubleSort = (a, b) => {
+    if (a.school === b.school) {
+      return a.childInitials < b.childInitials ? -1 : 1
+    }
+    else {
+      return a.school > b.school ? 1 : -1;
+    }
+  }
+
   handleChange = (evt) => {
     const { value } = evt.target;
     this.setState({ searchBar: value })
@@ -49,20 +64,29 @@ class ChildComponent extends Component {
         <div>
           {
             allData &&
-            allData.map(student => {
-              return (
-                <a href={`/children/${student.childInitials}`} key={student.id}>
-                  <div className="studentOverview">
-                    <h3 className="overviewElem">School: {student.school}</h3>
-                    <h3 className="overviewElem">Student: {student.childInitials}</h3>
-                    <h3>Child Risk Factors: {Object.keys(student).filter(key => this.childRiskFactors.includes(key) && student[key] !== false && student[key] !== null).length}</h3>
-                    <h3>Environmental Risk Factors: {Object.keys(student).filter(key => this.envRiskFactors.includes(key) && student[key] !== false && student[key] !== null).length}</h3>
-                    <h3>Child Protective Factors: {Object.keys(student).filter(key => this.childProtectFactors.includes(key) && student[key] !== false && student[key] !== null).length}</h3>
-                    <h3>Environmental Protective Factors: {Object.keys(student).filter(key => this.envProtectFactors.includes(key) && student[key] !== false && student[key] !== null).length}</h3>
-                  </div>
-                </a>
-              )
-            })
+            allData.sort((a, b) => this.doubleSort(a, b))
+              .map(student => {
+                return (
+                  <a href={`/children/${student.childInitials}`} key={student.id}>
+                    <div className="studentOverview">
+                      <h3 className="overviewElem">School: {student.school}</h3>
+                      <h3 className="overviewElem">Student: {student.childInitials}</h3>
+                      <h3>Child Risk Factors: {this.getCount(student, this.childRiskFactors)}</h3>
+                      <h3>Environmental Risk Factors: {this.getCount(student, this.envRiskFactors)}</h3>
+                      <h3>Child Protective Factors: {this.getCount(student, this.childProtectFactors)}</h3>
+                      <h3>Environmental Protective Factors: {this.getCount(student, this.envProtectFactors)}</h3>
+                      <br />
+                      <h3>Net Score: {
+                        this.netScore(
+                          this.getCount(student, this.childRiskFactors),
+                          this.getCount(student, this.envRiskFactors),
+                          this.getCount(student, this.childProtectFactors),
+                          this.getCount(student, this.envProtectFactors))}
+                      </h3>
+                    </div>
+                  </a>
+                )
+              })
           }
         </div>
       </div>

@@ -27,7 +27,8 @@ class DataInput extends Component {
 
   handleTextboxChange = (evt) => {
     let { name, value } = evt.target
-    this.setState({ [name]: value })
+    this.setState({ [name]: value.toUpperCase() })
+    console.log(this.state[name])
   }
 
   render() {
@@ -37,10 +38,10 @@ class DataInput extends Component {
         <div>
           <form onSubmit={this.handleSubmit}>
             <div className="topline">
-              Date: <input type="date" name="date" onChange={this.handleTextboxChange} value={this.state.date} />
-              School: <input type="text" name="school" onChange={this.handleTextboxChange} value={this.state.school} />
-              Observer Name: <input type="text" name="observer" onChange={this.handleTextboxChange} value={this.state.observer} />
-              Child Initials: <input type="text" name="childInitials" onChange={this.handleTextboxChange} value={this.state.childInitials} />
+              Date: <input type="date" name="date" onChange={this.handleTextboxChange} />
+              School: <input type="text" name="school" onChange={this.handleTextboxChange} />
+              Observer Name: <input type="text" name="observer" onChange={this.handleTextboxChange} />
+              Child Initials: <input type="text" name="childInitials" onChange={this.handleTextboxChange} />
             </div>
             <div className="risk-factors" id="risk-line">
               <ChildRisk
