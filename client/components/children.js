@@ -55,10 +55,10 @@ class ChildComponent extends Component {
                   <div className="studentOverview">
                     <h3 className="overviewElem">School: {student.school}</h3>
                     <h3 className="overviewElem">Student: {student.childInitials}</h3>
-                    <h3>Child Risk Factors: </h3>
-                    <h3>Environmental Risk Factors: </h3>
-                    <h3>Child Protective Factors: </h3>
-                    <h3>Environmental Protective Factors: </h3>
+                    <h3>Child Risk Factors: {Object.keys(student).filter(key => this.childRiskFactors.includes(key) && student[key] !== false && student[key] !== null).length}</h3>
+                    <h3>Environmental Risk Factors: {Object.keys(student).filter(key => this.envRiskFactors.includes(key) && student[key] !== false && student[key] !== null).length}</h3>
+                    <h3>Child Protective Factors: {Object.keys(student).filter(key => this.childProtectFactors.includes(key) && student[key] !== false && student[key] !== null).length}</h3>
+                    <h3>Environmental Protective Factors: {Object.keys(student).filter(key => this.envProtectFactors.includes(key) && student[key] !== false && student[key] !== null).length}</h3>
                   </div>
                 </a>
               )
