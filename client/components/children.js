@@ -8,10 +8,21 @@ class ChildComponent extends Component {
     searchBar: ''
   }
 
+  childRiskFactors = [
+    'anger', 'angerText', 'withdrawal', 'withdrawalText', 'esteem', 'esteemText', 'attendance', 'attendanceText', 'performance', 'performanceText', 'peerRelationships', 'peerRelationshipsText', 'adultRelationships', 'adultRelationshipsText', 'hygiene', 'hygieneText', 'sexBehavior', 'sexBehaviorText', 'frustrated', 'frustratedText', 'depression', 'depressionText', 'cries', 'criesText', 'impulsive', 'impulsiveText', 'nervous', 'nervousText', 'childRiskNotes'];
+
+  envRiskFactors = [
+    'singleParent', 'singleParentText', 'poverty', 'povertyText', 'teenParent', 'teenParentText', 'neglect', 'neglectText', 'abuse', 'abuseText', 'foster', 'fosterText', 'drugs', 'drugsText', 'substance', 'substanceText', 'violence', 'violenceText', 'conflict', 'conflictText', 'criminal', 'criminalText', 'incarceration', 'incarcerationText', 'criminalHome', 'criminalHomeText', 'gang', 'gangText', 'mentalIll', 'mentalIllText', 'relocation', 'relocationText', 'education', 'educationText', 'sibling', 'siblingText', 'neighborhood', 'neighborhoodText', 'delinquentPeers', 'delinquentPeersText', 'monitoring', 'monitoringText'];
+
+  childProtectFactors = [
+    'intelligent', 'intelligentText', 'efficacy', 'efficacyText', 'protectEsteem', 'protectEsteemText', 'interpersonal', 'interpersonalText', 'initiative', 'initiativeText', 'frustration', 'frustrationText', 'soothe', 'sootheText', 'help', 'helpText', 'temperament', 'temperamentText', 'hope', 'hopeText', 'trying', 'tryingText', 'likesSchool', 'likesSchoolText', 'humor', 'humorText', 'childProtectNotes'];
+
+  envProtectFactors = [
+    'goodCaregiver', 'goodCaregiverText', 'supervision', 'supervisionText', 'extended', 'extendedText', 'traditions', 'traditionsText', 'community', 'communityText', 'resources', 'resourcesText', 'familyStress', 'familyStressText', 'familyViolence', 'familyViolenceText']
+
   handleChange = (evt) => {
     const { value } = evt.target;
     this.setState({ searchBar: value })
-    console.log(this.state)
   }
 
   handleSubmit = (evt) => {
@@ -27,7 +38,6 @@ class ChildComponent extends Component {
 
   render() {
     const { allData, selectedData } = this.props.state.data;
-    console.log(allData);
     return (
       <div>
         <h1>Welcome to the Child Search Page</h1>
@@ -45,6 +55,10 @@ class ChildComponent extends Component {
                   <div className="studentOverview">
                     <h3 className="overviewElem">School: {student.school}</h3>
                     <h3 className="overviewElem">Student: {student.childInitials}</h3>
+                    <h3>Child Risk Factors: </h3>
+                    <h3>Environmental Risk Factors: </h3>
+                    <h3>Child Protective Factors: </h3>
+                    <h3>Environmental Protective Factors: </h3>
                   </div>
                 </a>
               )
