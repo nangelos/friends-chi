@@ -60,3 +60,14 @@ input.break {
 #notes-one {
   margin-bottom: 20px;
 }
+
+.studentOverview {
+  color: black;
+  display: flex;
+  border: gray 1px solid;
+  margin: 3px;
+}
+
+.overviewElem {
+  padding-right: 10px;
+}

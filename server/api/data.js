@@ -23,6 +23,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:initials', (req, res, next) => {
+  console.log(req.params)
   console.log(req.body)
   Data.findAll({
     where: {
@@ -37,12 +38,12 @@ router.get('/:initials', (req, res, next) => {
     })
 })
 
-router.get('/:id', (req, res, next) => {
-  Data.findById(req.header.id)
-    .then(issue => {
-      res.json(issue)
-    })
-    .catch(err => {
-      next(err)
-    })
-})
+// router.get('/:id', (req, res, next) => {
+//   Data.findById(req.header.id)
+//     .then(issue => {
+//       res.json(issue)
+//     })
+//     .catch(err => {
+//       next(err)
+//     })
+// })

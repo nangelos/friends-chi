@@ -30,6 +30,7 @@ const Data = db.define('data', {
   //Child Risk Factors
   anger: {
     type: Sequelize.BOOLEAN,
+    defaultValue: false,
   },
   angerText: {
     type: Sequelize.STRING,
