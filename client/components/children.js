@@ -40,11 +40,6 @@ class ChildComponent extends Component {
     this.setState({ searchBar: value })
   }
 
-  handleSubmit = (evt) => {
-    evt.preventDefault();
-    console.log('handling submit')
-  }
-
   componentDidMount() {
     console.log(this.props)
     const { getAllData } = this.props;
@@ -53,18 +48,27 @@ class ChildComponent extends Component {
 
   render() {
     const { allData, selectedData } = this.props.state.data;
+    const inputVaue = this.state.searchBar.toLowerCase();
+    const filteredChildren = allData.slice().reverse().filter(child => {
+      return (child.childInitials.toLowerCase().match(inputVaue) ||
+        child.school.toLowerCase().match(inputVaue)
+      )
+    })
     return (
       <div>
-        <h1>Welcome to the Child Search Page</h1>
+        <h1>Welcome to the Child Notes Page</h1>
         <form onSubmit={this.handleSubmit}>
-          Input Child Initials to Search
-          <input type="text" onChange={this.handleChange} />
-          <input type="submit" value="Search" />
+          Input Child Initials to Filter
+          <input
+            type="text"
+            placeholder="Search by School or Child..."
+            onChange={this.handleChange}
+            id="searchbar" />
         </form>
         <div>
           {
-            allData &&
-            allData.sort((a, b) => this.doubleSort(a, b))
+            filteredChildren &&
+            filteredChildren.sort((a, b) => this.doubleSort(a, b))
               .map(student => {
                 return (
                   <a href={`/children/${student.id}`} key={student.id}>

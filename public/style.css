@@ -86,3 +86,8 @@ input.break {
 .overviewElem {
   padding-right: 10px;
 }
+
+#searchbar {
+  margin-left: 10px;
+  width: 170px;
+}
