@@ -97,62 +97,119 @@ class ChildScoring extends Component {
                 placeholder="Enter Child Name"
                 onChange={this.handleTextboxChange} />
             </div>
-            <div className="score-section" id="risk-line">
-              <div>
-                <h2 className="section-header">Child Strengths</h2>
-                <div className="score-line">
-                  <input type="checkbox" name="intelligent" onChange={this.handleCheckboxChange} />
-                  Appears Highly Intelligent
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="efficacy" onChange={this.handleCheckboxChange} />
-                  Demonstrates Self-Efficacy
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="protectEsteem" onChange={this.handleCheckboxChange} />
-                  Healthy Self Exteem
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="interpersonal" onChange={this.handleCheckboxChange} />
-                  Good Interpersonal Skills
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="initiative" onChange={this.handleCheckboxChange} />
-                  Takes Initiative
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="frustration" onChange={this.handleCheckboxChange} />
-                  Age-appropriate Frustration
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="soothe" onChange={this.handleCheckboxChange} />
-                  Ability to Self-soothe
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="help" onChange={this.handleCheckboxChange} />
-                  Seeks Help/Support
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="temperament" onChange={this.handleCheckboxChange} />
-                  Easy-Going Temperament
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="hope" onChange={this.handleCheckboxChange} />
-                  Has a Sense of Hope
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="trying" onChange={this.handleCheckboxChange} />
-                  Willing to Keep Trying
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="likesSchool" onChange={this.handleCheckboxChange} />
-                  Likes School/Wants to Be There
-                </div>
-                <div className="score-line">
-                  <input type="checkbox" name="humor" onChange={this.handleCheckboxChange} />
-                  Has a Sense of Humor
-            </div>
+            <h2 className="section-header" id="scoring-header">Child Risks</h2>
+            <div className="score-section" id="score">
+              <div className="score-line">
+                <input type="checkbox" name="anger" onChange={this.props.handleCheckboxChange} />
+                Aggressive Anger Problems
               </div>
+              <div className="score-line">
+                <input type="checkbox" name="withdrawal" onChange={this.props.handleCheckboxChange} />
+                Social Withdrawal
+              </div>
+              <div className="score-line">
+                <input type="checkbox" name="esteem" onChange={this.props.handleCheckboxChange} />
+                Low Self-Esteem
+              </div>
+              <div className="score-line">
+                <input type="checkbox" name="attendance" onChange={this.props.handleCheckboxChange} />
+                Poor School Attendance
+              </div>
+              <div className="score-line">
+                <input type="checkbox" name="performance" onChange={this.props.handleCheckboxChange} />
+                Poor Work Habits/Performance
+               </div>
+              <div className="score-line">
+                <input type="checkbox" name="peerRelationships" onChange={this.props.handleCheckboxChange} />
+                Poor Peer Relationships
+               </div>
+              <div className="score-line">
+                <input type="checkbox" name="adultRelationships" onChange={this.props.handleCheckboxChange} />
+                Poor Adult Relationships
+               </div>
+              <div className="score-line">
+                <input type="checkbox" name="hygiene" onChange={this.props.handleCheckboxChange} />
+                Poor Hygiene/Health Concerns
+              </div>
+              <div className="score-line">
+                <input type="checkbox" name="sexBehavior" onChange={this.props.handleCheckboxChange} />
+                Sexualized Behavior
+               </div>
+              <div className="score-line">
+                <input type="checkbox" name="frustrated" onChange={this.props.handleCheckboxChange} />
+                Easily Frustrated/Poor Problem Solving
+              </div>
+              <div className="score-line">
+                <input type="checkbox" name="depression" onChange={this.props.handleCheckboxChange} />
+                Depression/Sadness/Grief
+            </div>
+              <div className="score-line">
+                <input type="checkbox" name="cries" onChange={this.props.handleCheckboxChange} />
+                Cries Easily/Often
+              </div>
+              <div className="score-line">
+                <input type="checkbox" name="impulsive" onChange={this.props.handleCheckboxChange} />
+                Poor Impulse Control/Inattentive
+              </div>
+              <div className="score-line">
+                <input type="checkbox" name="nervous" onChange={this.props.handleCheckboxChange} />
+                Nervous Habits
+              </div>
+            </div>
+            <h2 className="section-header" id="scoring-header">Child Strengths</h2>
+            <div className="score-section" id="score">
+              <div className="score-line">
+                <input type="checkbox" name="intelligent" onChange={this.handleCheckboxChange} />
+                Appears Highly Intelligent
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="efficacy" onChange={this.handleCheckboxChange} />
+                Demonstrates Self-Efficacy
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="protectEsteem" onChange={this.handleCheckboxChange} />
+                Healthy Self Exteem
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="interpersonal" onChange={this.handleCheckboxChange} />
+                Good Interpersonal Skills
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="initiative" onChange={this.handleCheckboxChange} />
+                Takes Initiative
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="frustration" onChange={this.handleCheckboxChange} />
+                Age-appropriate Frustration
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="soothe" onChange={this.handleCheckboxChange} />
+                Ability to Self-soothe
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="help" onChange={this.handleCheckboxChange} />
+                Seeks Help/Support
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="temperament" onChange={this.handleCheckboxChange} />
+                Easy-Going Temperament
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="hope" onChange={this.handleCheckboxChange} />
+                Has a Sense of Hope
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="trying" onChange={this.handleCheckboxChange} />
+                Willing to Keep Trying
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="likesSchool" onChange={this.handleCheckboxChange} />
+                Likes School/Wants to Be There
+                </div>
+              <div className="score-line">
+                <input type="checkbox" name="humor" onChange={this.handleCheckboxChange} />
+                Has a Sense of Humor
+                </div>
             </div>
             <div className="risk-factors" id="risk-line">
             </div>

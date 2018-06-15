@@ -15,6 +15,11 @@ nav a {
   margin: 1em;
 }
 
+input {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
@@ -91,21 +96,34 @@ input.break {
   margin-left: 10px;
   width: 170px;
 }
+.score-section {
+  justify-content: center;
+}
 
 .score-line {
-display: flex;
+  display: flex;
+  flex-flow: wrap;
+  width: 28%;
+  padding: 5px;
 }
 
 .section-header {
   text-align: center;
 }
 
-#risk-line {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+#scoring-header {
+  background-color: gray;
+  font-size: 25px;
+  margin-bottom: -10px;
 }
 
-#risk-line div {
-  width: 100%;
+#risk-line {
+  display: flex;
+}
+
+#score {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  border: black 2px solid;
 }
