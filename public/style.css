@@ -91,3 +91,21 @@ input.break {
   margin-left: 10px;
   width: 170px;
 }
+
+.score-line {
+display: flex;
+}
+
+.section-header {
+  text-align: center;
+}
+
+#risk-line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#risk-line div {
+  width: 100%;
+}
