@@ -17,6 +17,10 @@ nav a {
 
 input {
   margin-right: 5px;
+  margin-left: 3px;
+}
+
+select {
   margin-left: 5px;
 }
 
