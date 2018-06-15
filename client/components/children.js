@@ -69,20 +69,24 @@ class ChildComponent extends Component {
                 return (
                   <a href={`/children/${student.childInitials}`} key={student.id}>
                     <div className="studentOverview">
-                      <h3 className="overviewElem">School: {student.school}</h3>
-                      <h3 className="overviewElem">Student: {student.childInitials}</h3>
-                      <h3>Child Risk Factors: {this.getCount(student, this.childRiskFactors)}</h3>
-                      <h3>Environmental Risk Factors: {this.getCount(student, this.envRiskFactors)}</h3>
-                      <h3>Child Protective Factors: {this.getCount(student, this.childProtectFactors)}</h3>
-                      <h3>Environmental Protective Factors: {this.getCount(student, this.envProtectFactors)}</h3>
-                      <br />
-                      <h3>Net Score: {
-                        this.netScore(
-                          this.getCount(student, this.childRiskFactors),
-                          this.getCount(student, this.envRiskFactors),
-                          this.getCount(student, this.childProtectFactors),
-                          this.getCount(student, this.envProtectFactors))}
-                      </h3>
+                      <div id="notesRow1">
+                        <h3 className="overviewElem">School: {student.school}</h3>
+                        <h3 className="overviewElem">Student: {student.childInitials}</h3>
+                        <h3 className="overviewElem">Date: {student.date}</h3>
+                      </div>
+                      <div id="notesRow2">
+                        <h4>Child Risk Factors: {this.getCount(student, this.childRiskFactors)}</h4>
+                        <h4>Environmental Risk Factors: {this.getCount(student, this.envRiskFactors)}</h4>
+                        <h4>Child Protective Factors: {this.getCount(student, this.childProtectFactors)}</h4>
+                        <h4>Environmental Protective Factors: {this.getCount(student, this.envProtectFactors)}</h4>
+                        <h4>Net Score: {
+                          this.netScore(
+                            this.getCount(student, this.childRiskFactors),
+                            this.getCount(student, this.envRiskFactors),
+                            this.getCount(student, this.childProtectFactors),
+                            this.getCount(student, this.envProtectFactors))}
+                        </h4>
+                      </div>
                     </div>
                   </a>
                 )

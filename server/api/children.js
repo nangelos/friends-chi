@@ -22,7 +22,7 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.get('/:initials', (req, res, next) => {
+router.get('/:childInitials', (req, res, next) => {
   Data.findAll({
     where: {
       childInitials: req.params.initials

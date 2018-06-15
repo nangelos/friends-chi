@@ -7,7 +7,7 @@ const GET_SELECTED_DATA = 'GET_SELECTED_DATA'
 
 const initialState = {
   allData: [],
-  selectedData: {},
+  selectedData: [],
 };
 
 const createData = data => ({ type: CREATE_DATA, data });
@@ -29,11 +29,11 @@ export const fetchAllData = () => dispatch =>
     .then(res => dispatch(getAllData(res.data)))
     .catch(err => console.error(err))
 
-export const fetchSelectData = (initials) =>
-  dispatch =>
-    axios.get(`/api/data/${initials}`)
-      .then(res => dispatch(getSelectedData(res.data)))
-      .catch(err => console.error(err))
+export const fetchSelectData = (childInitials) => dispatch =>
+  axios.get(`/api/data/${childInitials}`)
+    .then(res =>
+      dispatch(getSelectedData(res.data)))
+    .catch(err => console.error(err))
 
 export default function (state = initialState, action) {
   switch (action.type) {

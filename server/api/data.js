@@ -24,10 +24,9 @@ router.get('/', (req, res, next) => {
 
 router.get('/:initials', (req, res, next) => {
   console.log(req.params)
-  console.log(req.body)
   Data.findAll({
     where: {
-      childInitials: req.body.childInitials
+      childInitials: req.params.initials
     }
   })
     .then(data => {
