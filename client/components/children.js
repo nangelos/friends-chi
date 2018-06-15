@@ -67,7 +67,7 @@ class ChildComponent extends Component {
             allData.sort((a, b) => this.doubleSort(a, b))
               .map(student => {
                 return (
-                  <a href={`/children/${student.childInitials}`} key={student.id}>
+                  <a href={`/children/${student.id}`} key={student.id}>
                     <div className="studentOverview">
                       <div id="notesRow1">
                         <h3 className="overviewElem">School: {student.school}</h3>

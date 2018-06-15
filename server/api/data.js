@@ -22,13 +22,9 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.get('/:initials', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   console.log(req.params)
-  Data.findAll({
-    where: {
-      childInitials: req.params.initials
-    }
-  })
+  Data.findById(req.params.id)
     .then(data => {
       res.json(data)
     })
