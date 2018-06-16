@@ -96,7 +96,7 @@ class ChildScoring extends Component {
 
   teacherList = ['teacherAnger', 'teacherWithdrawal', 'teacherEsteem', 'teacherAttendance', 'teacherPerformance', 'teacherPeerRelationships', 'teacherAdultRelationships', 'teacherHygiene', 'teacherSexBehavior', 'teacherFrustrated', 'teacherDepression', 'teacherCries', 'teacherImpulsive', 'teacherNervous']
 
-  ristList = ['singleParent', 'poverty', 'teenParent', 'neglect', 'abuse', 'foster', 'drugs', 'substance', 'violence', 'conflict', 'criminal', 'incarceration', 'criminalHome', 'gang', 'mentalIll', 'relocation', 'education', 'sibling', 'neighborhood', 'delinquentPeers', 'monitoring'];
+  riskList = ['singleParent', 'poverty', 'teenParent', 'neglect', 'abuse', 'foster', 'drugs', 'substance', 'violence', 'conflict', 'criminal', 'incarceration', 'criminalHome', 'gang', 'mentalIll', 'relocation', 'education', 'sibling', 'neighborhood', 'delinquentPeers', 'monitoring'];
 
   strengthsList = ['intelligent', 'efficacy', 'protectEsteem', 'interpersonal', 'initiative', 'frustration', 'soothe', 'help', 'temperament', 'hope', 'trying', 'likesSchool', 'humor', 'goodCaregiver', 'supervision', 'extended', 'traditions', 'community', 'resources', 'noFamilyStress', 'noFamilyViolence', 'noSubstanceAbuse', 'consistentEmployment', 'valueEducation'];
 
@@ -123,34 +123,23 @@ class ChildScoring extends Component {
 
   riskCheckboxScorer = (obj, list) => {
     let checkedCount = this.getCount(obj, list);
-    switch (checkedCount) {
-      case checkedCount < 2:
-        return 25;
-      case checkedCount === 3:
-        return 50;
-      case checkedCount < 5:
-        return 75;
-      case checkedCount >= 6:
-        return 100;
-      default:
-        return 0;
-    }
+    let value = 0;
+    if (checkedCount > 0 && checkedCount <= 2) value = 25;
+    if (checkedCount === 3) value = 50;
+    if (checkedCount > 3 && checkedCount <= 5) value = 75;
+    if (checkedCount >= 6) value = 100;
+    return value;
   }
 
   strengthsCheckboxScorer = (obj, list) => {
     let checkedCount = this.getCount(obj, list);
-    switch (checkedCount) {
-      case checkedCount >= 6:
-        return 0;
-      case checkedCount === 5:
-        return 25;
-      case checkedCount === 4:
-        return 50;
-      case checkedCount > 0 && checkedCount <= 3:
-        return 75;
-      default:
-        return 100;
-    }
+    let value = 100;
+    if (checkedCount >= 6) value = 0;
+    if (checkedCount === 5) value = 25;
+    if (checkedCount === 4) value = 50;
+    if (checkedCount <= 3 && checkedCount > 0) value = 75;
+    if (checkedCount === 0) value = 100;
+    return value;
   }
 
   selectorScorer = (obj, list) => {
@@ -570,6 +559,9 @@ class ChildScoring extends Component {
                 <input type="checkbox" name="monitoring" onChange={this.handleCheckboxChange} />
                 Lack of Parental Monitoring
                 </div>
+              <div className="riskscore-div">
+                <h1 className="risk-score">Score: {this.riskCheckboxScorer(this.state, this.riskList)}</h1>
+              </div>
             </div>
             {/* STRENGTHS QUESTIONNAIRE */}
             <h2 className="section-header" id="scoring-header">Child Strengths</h2>
