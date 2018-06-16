@@ -131,3 +131,30 @@ input.break {
   justify-content: space-between;
   border: black 2px solid;
 }
+
+.scope-description {
+  width: 80%;
+  margin-left: 50px;
+  margin-bottom: 0px;
+}
+
+.scope-description p {
+  margin-top: 0px;
+}
+
+#scope-two {
+  margin-top: 0px;
+}
+
+.scope {
+  margin-bottom: 0px;
+}
+
+#scope-selector {
+  margin-bottom: 10px;
+}
+
+#need-selector {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

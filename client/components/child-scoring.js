@@ -84,7 +84,23 @@ class ChildScoring extends Component {
     noSubstanceAbuse: false,
     consistentEmployment: false,
     valueEducation: false,
+    //scope questionnaire
+    scope1: false,
+    scope2: false,
+    scopeSelector: 'Yes',
+    //need questionnaire
+    needSelector: 0,
   }
+
+  friendList = ['friendAnger', 'friendWithdrawal', 'friendEsteem', 'friendAttendance', 'friendPerformance', 'friendPeerRelationships', 'friendAdultRelationships', 'friendHygiene', 'friendSexBehavior', 'friendFrustrated', 'friendDepression', 'friendCries', 'friendImpulsive', 'friendNervous'];
+
+  teacherList = ['teacherAnger', 'teacherWithdrawal', 'teacherEsteem', 'teacherAttendance', 'teacherPerformance', 'teacherPeerRelationships', 'teacherAdultRelationships', 'teacherHygiene', 'teacherSexBehavior', 'teacherFrustrated', 'teacherDepression', 'teacherCries', 'teacherImpulsive', 'teacherNervous']
+
+  ristList = ['singleParent', 'poverty', 'teenParent', 'neglect', 'abuse', 'foster', 'drugs', 'substance', 'violence', 'conflict', 'criminal', 'incarceration', 'criminalHome', 'gang', 'mentalIll', 'relocation', 'education', 'sibling', 'neighborhood', 'delinquentPeers', 'monitoring'];
+
+  strengthsList = ['intelligent', 'efficacy', 'protectEsteem', 'interpersonal', 'initiative', 'frustration', 'soothe', 'help', 'temperament', 'hope', 'trying', 'likesSchool', 'humor', 'goodCaregiver', 'supervision', 'extended', 'traditions', 'community', 'resources', 'noFamilyStress', 'noFamilyViolence', 'noSubstanceAbuse', 'consistentEmployment', 'valueEducation'];
+
+  scopeNeedList = ['scope1', 'scope2', 'scopeSelector', 'needSelector'];
 
   handleCheckboxChange = evt => {
     let { name } = evt.target
@@ -101,6 +117,42 @@ class ChildScoring extends Component {
     evt.preventDefault();
     console.log('submitting to Scoring Database');
   }
+
+  getCount = (obj, list) => Object.keys(obj)
+    .filter(key => list.includes(key) && obj[key] === true).length;
+
+  riskCheckboxScorer = (obj, list) => {
+    let checkedCount = this.getCount(obj, list);
+    switch (checkedCount) {
+      case checkedCount < 2:
+        return 25;
+      case checkedCount === 3:
+        return 50;
+      case checkedCount < 5:
+        return 75;
+      case checkedCount >= 6:
+        return 100;
+      default:
+        return 0;
+    }
+  }
+
+  strengthsCheckboxScorer = (obj, list) => {
+    let checkedCount = this.getCount(obj, list);
+    switch (checkedCount) {
+      case checkedCount >= 6:
+        return 0;
+      case checkedCount === 5:
+        return 25;
+      case checkedCount === 4:
+        return 50;
+      case checkedCount > 0 && checkedCount <= 3:
+        return 75;
+      default:
+        return 100;
+    }
+  }
+
 
   render() {
     return (
@@ -595,6 +647,51 @@ class ChildScoring extends Component {
                 <input type="checkbox" name="valueEducation" onChange={this.handleCheckboxChange} />
                 Family Values Education
                 </div>
+            </div>
+            {/* SCOPE QUESTIONNAIRE */}
+            <h2 className="section-header" id="scoring-header">Scope Questionnaire</h2>
+            <div className="score-section" id="score">
+              <div className="scope">
+                <input type="checkbox" name="scope1" onChange={this.handleCheckboxChange} />
+                1. One or more special and significant mental health needs appear to be present.
+                <div className="scope-description">
+                  <p>
+                    a. Child is strongly suspected to have, or is diagnosed with, a developmental disability and either the level of training Friends receive is not sufficient to appropriately work with the child and/or the Friends of the Children program model seems inappropriate for working with the child.
+                </p>
+                  <p>
+                    b. Child demonstrates behavior issues that are extreme, and the level of training Friends receive is not sufficient to keep the child, him/herself and/or others physically safe during one-on-one and other activities witha a Friend.
+                </p>
+                  <p>
+                    c. Child is strongly suspected to have, or is diagnosed with, some other severe disorder, such as Pervasive Developmental Disorder, Fetal Alcohol Spectrum Disorder, Reactive Attachment Disorder, or a psychotic disorder, and the level of training Firends receive is not sufficient to appropriately work with the child and/or the Friends of the Children program model seems inappropriate for working with the child.
+                </p>
+                </div>
+              </div>
+              <div className="scope" id="scope-two">
+                <input type="checkbox" name="scope2" onChange={this.handleCheckboxChange} />
+                2. A special language needs is present, namely that the child does not speak English or he or she uses Spanish or American Sign Language exclusively, and no same sex Friends are available who speak Spanish or use American Sign Language.
+              </div>
+              <div className="scope" id="scope-selector">
+                <select name="scopeSelector">
+                  <option value="Yes">Yes (NO items above are checked)</option>
+                  <option value="No">No (one or more items above are checked)</option>
+                </select>
+              </div>
+            </div>
+            {/* NEED QUESTIONNAIRE */}
+            <h2 className="section-header" id="scoring-header">Need Questionnaire</h2>
+            <div className="score-section" id="score">
+              <div className="scope">
+                Choose the statement that best estimates how effective the FOTC program is likely to be in terms of making a difference in the life of this child.
+                <div id="need-selector">
+                  <select name="needSelector">
+                    <option value="1">The child will most likely succeed, and is not really in need of a Friend</option>
+                    <option value="2">The child will most likely succeed, but could be hlped by a Friend</option>
+                    <option value="3">It is unclear if the child will succeed, and a Friend might make the difference</option>
+                    <option value="4">The child will most likely struggle to succeed, and a Friend is likely to help</option>
+                    <option value="5">The child will most likely struggle greatly to succeed, and has a great need for a Friend</option>
+                  </select>
+                </div>
+              </div>
             </div>
             <input type="submit" value="Submit" onSubmit={this.handleSubmit} />
           </form>
