@@ -153,6 +153,27 @@ class ChildScoring extends Component {
     }
   }
 
+  selectorScorer = (obj, list) => {
+    const scoreObj = {
+      zeros: 0,
+      ones: 0,
+      twos: 0,
+      threes: 0,
+      fours: 0,
+    }
+    for (let key in obj) {
+      if (list.includes(key)) {
+        if (Number(obj[key]) === 0) scoreObj.zeros++;
+        if (Number(obj[key]) === 1) scoreObj.ones++;
+        if (Number(obj[key]) === 2) scoreObj.twos++;
+        if (Number(obj[key]) === 3) scoreObj.threes++;
+        if (Number(obj[key]) === 4) scoreObj.fours++;
+      }
+    }
+    let sum = scoreObj.ones + scoreObj.twos * 2 + scoreObj.threes * 3 + scoreObj.fours * 4;
+    return sum;
+  }
+
 
   render() {
     return (
@@ -315,6 +336,7 @@ class ChildScoring extends Component {
                   <option value="4">Severe Problem</option>
                 </select>
               </div>
+              <h1 className="score-display">Score: {this.selectorScorer(this.state, this.friendList)}</h1>
             </div>
             {/* TEACHER QUESTIONNAIRE */}
             <h2 className="section-header" id="scoring-header">Teacher Questionnaire</h2>
@@ -459,6 +481,7 @@ class ChildScoring extends Component {
                   <option value="4">Severe Problem</option>
                 </select>
               </div>
+              <h1 className="score-display">Score: {this.selectorScorer(this.state, this.teacherList)}</h1>
             </div>
             {/* ENVIRONMENTAL QUESTIONNAIRE */}
             <h2 className="section-header" id="scoring-header">Environmental Risks</h2>
