@@ -6,6 +6,7 @@ class ChildScoring extends Component {
   state = {
     school: '',
     childName: '',
+    totalScore: 0,
     //friend questionnaire
     friendAnger: 0,
     friendWithdrawal: 0,
@@ -100,7 +101,7 @@ class ChildScoring extends Component {
 
   strengthsList = ['intelligent', 'efficacy', 'protectEsteem', 'interpersonal', 'initiative', 'frustration', 'soothe', 'help', 'temperament', 'hope', 'trying', 'likesSchool', 'humor', 'goodCaregiver', 'supervision', 'extended', 'traditions', 'community', 'resources', 'noFamilyStress', 'noFamilyViolence', 'noSubstanceAbuse', 'consistentEmployment', 'valueEducation'];
 
-  scopeNeedList = ['scope1', 'scope2', 'scopeSelector', 'needSelector'];
+  scopeNeedList = [/*'scope1', 'scope2', 'scopeSelector',*/ 'needSelector'];
 
   handleCheckboxChange = evt => {
     let { name } = evt.target
@@ -110,7 +111,6 @@ class ChildScoring extends Component {
   handleTextboxChange = (evt) => {
     let { name, value } = evt.target
     this.setState({ [name]: value.toUpperCase() })
-    console.log(this.state[name])
   }
 
   handleSubmit = evt => {
@@ -159,8 +159,25 @@ class ChildScoring extends Component {
         if (Number(obj[key]) === 4) scoreObj.fours++;
       }
     }
-    let sum = scoreObj.ones + scoreObj.twos * 2 + scoreObj.threes * 3 + scoreObj.fours * 4;
+    let sum = (scoreObj.ones + scoreObj.twos * 2 + scoreObj.threes * 3 + scoreObj.fours * 4);
     return sum;
+  }
+
+  needScorer = (val) => {
+    if (Number(val) === 0) return 0;
+    if (Number(val) === 1) return 25;
+    if (Number(val) === 2) return 50;
+    if (Number(val) === 3) return 75;
+    if (Number(val) === 4) return 100;
+  }
+
+  /*eslint max-params: "off"*/
+  finalScore = (name, scope, friend, teacher, risk, strength, need) => {
+    let score;
+    if (scope === 'No') score = `${name} IS NOT IN SCOPE`;
+    score = friend + teacher + risk + strength + need;
+    this.setState({ totalScore: score })
+    return score;
   }
 
 
@@ -181,6 +198,7 @@ class ChildScoring extends Component {
                 name="childName"
                 placeholder="Enter Child Name"
                 onChange={this.handleTextboxChange} />
+              <h1>Total Score: {}</h1>
             </div>
             {/* FRIEND QUESTIONNAIRE */}
             <h2 className="section-header" id="scoring-header">Friend Questionnaire</h2>
@@ -662,6 +680,9 @@ class ChildScoring extends Component {
                 <input type="checkbox" name="valueEducation" onChange={this.handleCheckboxChange} />
                 Family Values Education
                 </div>
+              <div className="riskscore-div">
+                <h1 className="risk-score">Score: {this.strengthsCheckboxScorer(this.state, this.strengthsList)}</h1>
+              </div>
             </div>
             {/* SCOPE QUESTIONNAIRE */}
             <h2 className="section-header" id="scoring-header">Scope Questionnaire</h2>
@@ -698,16 +719,20 @@ class ChildScoring extends Component {
               <div className="scope">
                 Choose the statement that best estimates how effective the FOTC program is likely to be in terms of making a difference in the life of this child.
                 <div id="need-selector">
-                  <select name="needSelector">
-                    <option value="1">The child will most likely succeed, and is not really in need of a Friend</option>
-                    <option value="2">The child will most likely succeed, but could be hlped by a Friend</option>
-                    <option value="3">It is unclear if the child will succeed, and a Friend might make the difference</option>
-                    <option value="4">The child will most likely struggle to succeed, and a Friend is likely to help</option>
-                    <option value="5">The child will most likely struggle greatly to succeed, and has a great need for a Friend</option>
+                  <select name="needSelector" onChange={this.handleTextboxChange}>
+                    <option value="0">The child will most likely succeed, and is not really in need of a Friend</option>
+                    <option value="1">The child will most likely succeed, but could be hlped by a Friend</option>
+                    <option value="2">It is unclear if the child will succeed, and a Friend might make the difference</option>
+                    <option value="3">The child will most likely struggle to succeed, and a Friend is likely to help</option>
+                    <option value="4">The child will most likely struggle greatly to succeed, and has a great need for a Friend</option>
                   </select>
                 </div>
               </div>
+              <div className="riskscore-div">
+                <h1 className="risk-score">Score: {this.needScorer(this.state.needSelector)}</h1>
+              </div>
             </div>
+            <div></div>
             <input type="submit" value="Submit" onSubmit={this.handleSubmit} />
           </form>
         </div>
