@@ -29,7 +29,6 @@ class Routes extends Component {
             <Route path="/notes" component={DataInput} />
             <Route exact path="/children" component={ChildComponent} />
             <Route path="/children/:initials" component={ChildNotes} />
-            <Route path="/children/:initials" component={ChildNotes} />
             <Route path="/scoring" component={ChildScoring} />
           </Switch>
         }

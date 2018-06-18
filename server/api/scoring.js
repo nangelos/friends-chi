@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Data } = require('../db/models');
+const { Scoring } = require('../db/models');
 module.exports = router;
 
 router.post('/', (req, res, next) => {
-  Data.create(req.body)
+  Scoring.create(req.body)
     .then(data => {
       res.status(201).json(data)
     })
@@ -13,7 +13,7 @@ router.post('/', (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-  Data.findAll()
+  Scoring.findAll()
     .then(data => {
       res.json(data)
     })
@@ -23,7 +23,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
-  Data.findById(req.params.id)
+  Scoring.findById(req.params.id)
     .then(data => {
       res.json(data)
     })

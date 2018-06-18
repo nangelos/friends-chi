@@ -14,16 +14,16 @@ const createScore = data => ({ type: CREATE_SCORE, data });
 const getAllScores = data => ({ type: GET_ALL_SCORES, data });
 const getSelectedScore = data => ({ type: GET_SELECTED_SCORE, data })
 
-export const addScore = data =>
-  dispatch =>
+export const addScore = scoredata => {
+  return dispatch =>
     axios
-      .post('/api/scoring', data)
+      .post('/api/scoring', scoredata)
       .then(res => {
         dispatch(createScore(res.data));
-        // history.push('/home');
+        history.push('/scoring');
       })
       .catch(err => console.error(err));
-
+}
 export const fetchAllScores = () => dispatch =>
   axios.get('/api/scoring')
     .then(res => dispatch(getAllScores(res.data)))

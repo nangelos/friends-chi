@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import addScore from '../store';
+import { addScore } from '../store';
 
 
 class ChildScoring extends Component {
@@ -120,11 +120,23 @@ class ChildScoring extends Component {
   }
 
   handleSubmit = evt => {
-    this.updateStateScores();
     evt.preventDefault();
-    console.log('submitting to Scoring Database');
-    console.log(this.state.friendScore, this.state.teacherScore, this.state.riskScore, this.state.needScore, this.state.totalScore)
-    this.props.createScore();
+    const { createScore } = this.props;
+    let scoreFriend = this.selectorScorer(this.state, this.friendList);
+    let scoreTeacher = this.selectorScorer(this.state, this.teacherList);
+    let scoreRisk = this.riskCheckboxScorer(this.state, this.riskList);
+    let scoreStrength = this.strengthsCheckboxScorer(this.state, this.strengthsList);
+    let scoreNeed = this.needScorer(this.state.needSelector);
+    let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed;
+    const pushObj = Object.assign(this.state, {
+      friendScore: scoreFriend,
+      teacherScore: scoreTeacher,
+      riskScore: scoreRisk,
+      strengthScore: scoreStrength,
+      needScore: scoreNeed,
+      totalScore: scoreTotal
+    })
+    createScore(pushObj)
   }
 
   getCount = (obj, list) => Object.keys(obj)
@@ -137,7 +149,6 @@ class ChildScoring extends Component {
     if (checkedCount === 3) value = 50;
     if (checkedCount > 3 && checkedCount <= 5) value = 75;
     if (checkedCount >= 6) value = 100;
-    // this.setState({ riskScore: value });
     return value;
   }
 
@@ -149,15 +160,11 @@ class ChildScoring extends Component {
     if (checkedCount === 4) value = 50;
     if (checkedCount <= 3 && checkedCount > 0) value = 75;
     if (checkedCount === 0) value = 100;
-    // this.setState({ strengthScore: value });
     return value;
   }
 
   /*eslint complexity: 0*/
   selectorScorer = (obj, list) => {
-    // let change;
-    // if (list === this.friendList) change = 'friendScore';
-    // if (list === this.teacherList) change = 'teacherScore';
     const scoreObj = {
       zeros: 0,
       ones: 0,
@@ -175,7 +182,6 @@ class ChildScoring extends Component {
       }
     }
     let sum = (scoreObj.ones + scoreObj.twos * 2 + scoreObj.threes * 3 + scoreObj.fours * 4);
-    // this.setState({ [change]: sum })
     return sum;
   }
 
@@ -210,7 +216,17 @@ class ChildScoring extends Component {
       teacherScore: scoreTeacher,
       riskScore: scoreRisk,
       strengthScore: scoreStrength,
+      needScore: scoreNeed,
       totalScore: scoreTotal
+    }, () => {
+      console.log(
+        'friendScore: ', this.state.friendScore + '\n',
+        'teacherScore: ', this.state.teacherScore + '\n',
+        'riskScore: ', this.state.riskScore + '\n',
+        'strengthScore: ', this.state.strengthScore + '\n',
+        'needScore: ', this.state.needScore + '\n',
+        'totalScore: ', this.state.totalScore
+      )
     })
   }
 
@@ -220,7 +236,7 @@ class ChildScoring extends Component {
       <div>
         <h1 className="section-header">Final Scoring for Child </h1>
         <div>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className="topline">
               School Name: <input
                 className="scoring-topline-input"
@@ -574,7 +590,7 @@ class ChildScoring extends Component {
                 Parent Criminal History
                 </div>
               <div className="score-line">
-                <input type="checkbox" name="incarcerated" onChange={this.handleCheckboxChange} />
+                <input type="checkbox" name="incarceration" onChange={this.handleCheckboxChange} />
                 Parent Incarcerated (past/present)
                 </div>
               <div className="score-line">
@@ -768,7 +784,7 @@ class ChildScoring extends Component {
                 <h1 className="risk-score">Score: {this.needScorer(this.state.needSelector)}</h1>
               </div>
             </div>
-            <input type="submit" value="Submit" onSubmit={this.handleSubmit} />
+            <input type="submit" value="Submit" />
           </form>
         </div>
       </div >
@@ -778,7 +794,7 @@ class ChildScoring extends Component {
 
 const mapState = state => ({ state })
 const mapDispatch = dispatch => ({
-  createScore: dispatch(addScore())
+  createScore: data => dispatch(addScore(data))
 });
 
 export default connect(mapState, mapDispatch)(ChildScoring);
