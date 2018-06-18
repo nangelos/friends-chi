@@ -17,6 +17,9 @@ const Scoring = db.define('scoring', {
       notEmpty: true,
     },
   },
+  gender: {
+    type: Sequelize.ENUM(['boy', 'Boy', 'BOY', 'girl', 'Girl', 'GIRL'])
+  },
   totalScore: {
     type: Sequelize.INTEGER,
     validate: {

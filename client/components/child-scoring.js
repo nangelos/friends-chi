@@ -7,6 +7,7 @@ class ChildScoring extends Component {
   state = {
     school: '',
     childName: '',
+    gender: 'BOY',
     totalScore: 0,
     //friend questionnaire
     friendAnger: 0,
@@ -93,7 +94,7 @@ class ChildScoring extends Component {
     //scope questionnaire
     scope1: false,
     scope2: false,
-    scopeSelector: 'Yes',
+    scopeSelector: 'YES',
     //need questionnaire
     needSelector: 0,
     needScore: 0,
@@ -250,6 +251,13 @@ class ChildScoring extends Component {
                 name="childName"
                 placeholder="Enter Child Name"
                 onChange={this.handleTextboxChange} />
+              <div className="questionnaire-line">
+                Gender:
+                <select name="gender" onChange={this.handleTextboxChange}>
+                  <option value="Boy">Boy</option>
+                  <option value="Girl">Girl</option>
+                </select>
+              </div>
               <h1 id="total-score">{this.finalScore(this.state.childName, this.state.scopeSelector, this.selectorScorer(this.state, this.friendList), this.selectorScorer(this.state, this.teacherList), this.riskCheckboxScorer(this.state, this.riskList), this.strengthsCheckboxScorer(this.state, this.strengthsList), this.needScorer(this.state.needSelector))}</h1>
             </div>
             {/* FRIEND QUESTIONNAIRE */}

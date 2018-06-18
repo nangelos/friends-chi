@@ -14,19 +14,19 @@ const createScore = data => ({ type: CREATE_SCORE, data });
 const getAllScores = data => ({ type: GET_ALL_SCORES, data });
 const getSelectedScore = data => ({ type: GET_SELECTED_SCORE, data })
 
-export const addScore = scoredata => {
-  return dispatch =>
-    axios
-      .post('/api/scoring', scoredata)
-      .then(res => {
-        dispatch(createScore(res.data));
-        history.push('/scoring');
-      })
-      .catch(err => console.error(err));
-}
+export const addScore = scoredata => dispatch =>
+  axios.post('/api/scoring', scoredata)
+    .then(res => {
+      dispatch(createScore(res.data));
+      history.push('/scoring');
+    })
+    .catch(err => console.error(err));
+
 export const fetchAllScores = () => dispatch =>
   axios.get('/api/scoring')
-    .then(res => dispatch(getAllScores(res.data)))
+    .then(res => {
+      dispatch(getAllScores(res.data))
+    })
     .catch(err => console.error(err))
 
 export const fetchSelectScore = (childInitials) => dispatch =>
@@ -41,10 +41,10 @@ export default function (state = initialState, action) {
       return { ...state, allScores: action.data };
 
     case GET_ALL_SCORES:
-      return { ...state, allScores: action.data }
+      return { ...state, allScores: action.data };
 
     case GET_SELECTED_SCORE:
-      return { ...state, selectedScore: action.data }
+      return { ...state, selectedScore: action.data };
 
     default:
       return state;

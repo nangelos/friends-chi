@@ -190,3 +190,34 @@ input.break {
 .scoring-topline-input {
   height: 20px;
 }
+
+.ranking-element {
+  color: black;
+  border: gray 1px solid;
+  margin: 3px;
+  display: flex;
+  /* justify-content: space-between */
+}
+
+.ranking-number {
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.ranking-name {
+  margin-right: 10px;
+  margin-right: 10px;
+  text-align: justify;
+  flex-grow: 1;
+}
+
+.ranking-school {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.ranking-score {
+  text-align: right;
+  margin-right: 10px;
+  flex-grow: 1;
+}
