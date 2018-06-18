@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import addScore from '../store';
 
 
 class ChildScoring extends Component {
@@ -22,6 +23,7 @@ class ChildScoring extends Component {
     friendCries: 0,
     friendImpulsive: 0,
     friendNervous: 0,
+    friendScore: 0,
     //teacher questionnaire
     teacherAnger: 0,
     teacherWithdrawal: 0,
@@ -37,6 +39,7 @@ class ChildScoring extends Component {
     teacherCries: 0,
     teacherImpulsive: 0,
     teacherNervous: 0,
+    teacherScore: 0,
     //environment risk
     singleParent: false,
     poverty: false,
@@ -59,6 +62,7 @@ class ChildScoring extends Component {
     neighborhood: false,
     delinquentPeers: false,
     monitoring: false,
+    riskScore: 0,
     //child strengths
     intelligent: false,
     efficacy: false,
@@ -85,12 +89,14 @@ class ChildScoring extends Component {
     noSubstanceAbuse: false,
     consistentEmployment: false,
     valueEducation: false,
+    strengthScore: 100,
     //scope questionnaire
     scope1: false,
     scope2: false,
     scopeSelector: 'Yes',
     //need questionnaire
     needSelector: 0,
+    needScore: 0,
   }
 
   friendList = ['friendAnger', 'friendWithdrawal', 'friendEsteem', 'friendAttendance', 'friendPerformance', 'friendPeerRelationships', 'friendAdultRelationships', 'friendHygiene', 'friendSexBehavior', 'friendFrustrated', 'friendDepression', 'friendCries', 'friendImpulsive', 'friendNervous'];
@@ -114,8 +120,11 @@ class ChildScoring extends Component {
   }
 
   handleSubmit = evt => {
+    this.updateStateScores();
     evt.preventDefault();
     console.log('submitting to Scoring Database');
+    console.log(this.state.friendScore, this.state.teacherScore, this.state.riskScore, this.state.needScore, this.state.totalScore)
+    this.props.createScore();
   }
 
   getCount = (obj, list) => Object.keys(obj)
@@ -128,6 +137,7 @@ class ChildScoring extends Component {
     if (checkedCount === 3) value = 50;
     if (checkedCount > 3 && checkedCount <= 5) value = 75;
     if (checkedCount >= 6) value = 100;
+    // this.setState({ riskScore: value });
     return value;
   }
 
@@ -139,10 +149,15 @@ class ChildScoring extends Component {
     if (checkedCount === 4) value = 50;
     if (checkedCount <= 3 && checkedCount > 0) value = 75;
     if (checkedCount === 0) value = 100;
+    // this.setState({ strengthScore: value });
     return value;
   }
 
+  /*eslint complexity: 0*/
   selectorScorer = (obj, list) => {
+    // let change;
+    // if (list === this.friendList) change = 'friendScore';
+    // if (list === this.teacherList) change = 'teacherScore';
     const scoreObj = {
       zeros: 0,
       ones: 0,
@@ -160,6 +175,7 @@ class ChildScoring extends Component {
       }
     }
     let sum = (scoreObj.ones + scoreObj.twos * 2 + scoreObj.threes * 3 + scoreObj.fours * 4);
+    // this.setState({ [change]: sum })
     return sum;
   }
 
@@ -174,10 +190,28 @@ class ChildScoring extends Component {
   /*eslint max-params: "off"*/
   finalScore = (name, scope, friend, teacher, risk, strength, need) => {
     let score;
-    if (scope === 'No') score = `${name} IS NOT IN SCOPE`;
+    if (scope.toLowerCase() === 'no') {
+      score = `${name} IS NOT IN SCOPE`
+      return score;
+    }
     score = friend + teacher + risk + strength + need;
-    this.setState({ totalScore: score })
-    return score;
+    return `Total Score: ${score}`;
+  }
+
+  updateStateScores = () => {
+    let scoreFriend = this.selectorScorer(this.state, this.friendList);
+    let scoreTeacher = this.selectorScorer(this.state, this.teacherList);
+    let scoreRisk = this.riskCheckboxScorer(this.state, this.riskList);
+    let scoreStrength = this.strengthsCheckboxScorer(this.state, this.strengthsList);
+    let scoreNeed = this.needScorer(this.state.needSelector);
+    let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed;
+    this.setState({
+      friendScore: scoreFriend,
+      teacherScore: scoreTeacher,
+      riskScore: scoreRisk,
+      strengthScore: scoreStrength,
+      totalScore: scoreTotal
+    })
   }
 
 
@@ -189,16 +223,18 @@ class ChildScoring extends Component {
           <form>
             <div className="topline">
               School Name: <input
+                className="scoring-topline-input"
                 type="text"
                 name="school"
                 placeholder="Enter School Name"
                 onChange={this.handleTextboxChange} />
               Child Name: <input
+                className="scoring-topline-input"
                 type="text"
                 name="childName"
                 placeholder="Enter Child Name"
                 onChange={this.handleTextboxChange} />
-              <h1>Total Score: {}</h1>
+              <h1 id="total-score">{this.finalScore(this.state.childName, this.state.scopeSelector, this.selectorScorer(this.state, this.friendList), this.selectorScorer(this.state, this.teacherList), this.riskCheckboxScorer(this.state, this.riskList), this.strengthsCheckboxScorer(this.state, this.strengthsList), this.needScorer(this.state.needSelector))}</h1>
             </div>
             {/* FRIEND QUESTIONNAIRE */}
             <h2 className="section-header" id="scoring-header">Friend Questionnaire</h2>
@@ -707,7 +743,7 @@ class ChildScoring extends Component {
                 2. A special language needs is present, namely that the child does not speak English or he or she uses Spanish or American Sign Language exclusively, and no same sex Friends are available who speak Spanish or use American Sign Language.
               </div>
               <div className="scope" id="scope-selector">
-                <select name="scopeSelector">
+                <select name="scopeSelector" onChange={this.handleTextboxChange}>
                   <option value="Yes">Yes (NO items above are checked)</option>
                   <option value="No">No (one or more items above are checked)</option>
                 </select>
@@ -732,7 +768,6 @@ class ChildScoring extends Component {
                 <h1 className="risk-score">Score: {this.needScorer(this.state.needSelector)}</h1>
               </div>
             </div>
-            <div></div>
             <input type="submit" value="Submit" onSubmit={this.handleSubmit} />
           </form>
         </div>
@@ -742,6 +777,9 @@ class ChildScoring extends Component {
 }
 
 const mapState = state => ({ state })
-const mapDispatch = null;
-export default connect(mapState, null)(ChildScoring);
+const mapDispatch = dispatch => ({
+  createScore: dispatch(addScore())
+});
+
+export default connect(mapState, mapDispatch)(ChildScoring);
 

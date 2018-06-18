@@ -32,6 +32,7 @@ form div {
 .topline {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .factor-details {
@@ -175,4 +176,17 @@ input.break {
   width: 100%;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+#total-score {
+  margin-bottom: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.scoring-topline-input {
+  height: 20px;
 }
