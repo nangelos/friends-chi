@@ -20,7 +20,7 @@ export const addData = data =>
       .post('/api/data', data)
       .then(res => {
         dispatch(createData(res.data));
-        history.push('/home');
+        // history.push('/home');
       })
       .catch(err => console.error(err));
 
@@ -38,7 +38,7 @@ export const fetchSelectData = (childInitials) => dispatch =>
 export default function (state = initialState, action) {
   switch (action.type) {
     case CREATE_DATA:
-      return { ...state, allData: action.data };
+      return { ...state, allData: [...state.allData, action.data] };
 
     case GET_ALL_DATA:
       return { ...state, allData: action.data }

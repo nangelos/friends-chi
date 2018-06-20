@@ -22,9 +22,7 @@ class Rankings extends Component {
       .sort(this.sortChildren)
 
   render() {
-    console.log(this.props);
     const { allScores } = this.props.state.scoring;
-    console.log(allScores);
     const boys = this.getChildRankings(allScores, 'BOY');
     const girls = this.getChildRankings(allScores, 'GIRL');
     return (

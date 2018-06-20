@@ -28,7 +28,6 @@ class DataInput extends Component {
   handleTextboxChange = (evt) => {
     let { name, value } = evt.target
     this.setState({ [name]: value.toUpperCase() })
-    console.log(this.state[name])
   }
 
   render() {

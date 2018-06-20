@@ -38,7 +38,7 @@ export const fetchSelectScore = (childInitials) => dispatch =>
 export default function (state = initialState, action) {
   switch (action.type) {
     case CREATE_SCORE:
-      return { ...state, allScores: action.data };
+      return { ...state, allScores: [state.allScores, action.data] };
 
     case GET_ALL_SCORES:
       return { ...state, allScores: action.data };
