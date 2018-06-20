@@ -18,6 +18,7 @@ class DataInput extends Component {
     evt.preventDefault()
     const { createIssue } = this.props;
     createIssue(this.state)
+    window.location.reload(false);
   }
 
   handleCheckboxChange = evt => {

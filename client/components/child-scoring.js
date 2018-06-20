@@ -138,6 +138,7 @@ class ChildScoring extends Component {
       totalScore: scoreTotal
     })
     createScore(pushObj)
+    window.location.reload(false);
   }
 
   getCount = (obj, list) => Object.keys(obj)

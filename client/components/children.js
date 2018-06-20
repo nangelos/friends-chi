@@ -41,7 +41,6 @@ class ChildComponent extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     const { getAllData } = this.props;
     getAllData()
   }
