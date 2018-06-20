@@ -221,3 +221,7 @@ input.break {
   margin-right: 10px;
   flex-grow: 1;
 }
+
+.rankings {
+  text-align: center;
+}
