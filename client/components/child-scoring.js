@@ -123,12 +123,14 @@ class ChildScoring extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     const { createScore } = this.props;
+    const { scopeSelector } = this.state;
     let scoreFriend = this.selectorScorer(this.state, this.friendList);
     let scoreTeacher = this.selectorScorer(this.state, this.teacherList);
     let scoreRisk = this.riskCheckboxScorer(this.state, this.riskList);
     let scoreStrength = this.strengthsCheckboxScorer(this.state, this.strengthsList);
     let scoreNeed = this.needScorer(this.state.needSelector);
     let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed;
+    if (scopeSelector.toLowerCase() === 'no') scoreTotal = -100;
     const pushObj = Object.assign(this.state, {
       friendScore: scoreFriend,
       teacherScore: scoreTeacher,
@@ -202,8 +204,10 @@ class ChildScoring extends Component {
       score = `${name} IS NOT IN SCOPE`
       return score;
     }
-    score = friend + teacher + risk + strength + need;
-    return `Total Score: ${score}`;
+    else {
+      score = friend + teacher + risk + strength + need;
+      return `Total Score: ${score}`;
+    }
   }
 
   updateStateScores = () => {
@@ -241,12 +245,14 @@ class ChildScoring extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="topline">
               School Name: <input
+                required={true}
                 className="scoring-topline-input"
                 type="text"
                 name="school"
                 placeholder="Enter School Name"
                 onChange={this.handleTextboxChange} />
               Child Name: <input
+                required={true}
                 className="scoring-topline-input"
                 type="text"
                 name="childName"

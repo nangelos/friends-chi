@@ -56,7 +56,7 @@ class ChildComponent extends Component {
     return (
       <div>
         <h1>Welcome to the Child Notes Page</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form id="search-component" onSubmit={this.handleSubmit}>
           Input Child Initials to Filter
           <input
             type="text"
@@ -75,6 +75,7 @@ class ChildComponent extends Component {
                       <div id="notesRow1">
                         <h3 className="overviewElem">School: {student.school}</h3>
                         <h3 className="overviewElem">Student: {student.childInitials}</h3>
+                        <h3 className="overviewElem">Observer: {student.observer}</h3>
                         <h3 className="overviewElem">Date: {student.date}</h3>
                       </div>
                       <div id="notesRow2">

@@ -18,9 +18,7 @@ class ChildNotes extends Component {
   }
 
   render() {
-    console.log(this.props);
     const childData = this.props.state.data.selectedData;
-    console.log(childData);
     return (
       <div>
         <h1>Here are the child notes</h1>

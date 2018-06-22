@@ -34,14 +34,14 @@ class DataInput extends Component {
   render() {
     return (
       <div>
-        <h2>Observation Data</h2>
+        <h1>Observation Data</h1>
         <div>
           <form onSubmit={this.handleSubmit}>
             <div className="topline">
-              Date: <input type="date" name="date" onChange={this.handleTextboxChange} />
-              School: <input type="text" name="school" onChange={this.handleTextboxChange} />
-              Observer Name: <input type="text" name="observer" onChange={this.handleTextboxChange} />
-              Child Initials: <input type="text" name="childInitials" onChange={this.handleTextboxChange} />
+              Date: <input required={true} type="date" name="date" onChange={this.handleTextboxChange} />
+              School: <input required={true} type="text" name="school" onChange={this.handleTextboxChange} />
+              Observer Name: <input required={true} type="text" name="observer" onChange={this.handleTextboxChange} />
+              Child Initials: <input required={true} type="text" name="childInitials" onChange={this.handleTextboxChange} />
             </div>
             <div className="risk-factors" id="risk-line">
               <ChildRisk
