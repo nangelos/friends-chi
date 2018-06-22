@@ -19,6 +19,7 @@ nav a {
   background-color: rgb(186, 207, 242);
   color: black;
   text-decoration: underline;
+  /* border-radius: 15px; */
 }
 
 input {
@@ -264,8 +265,9 @@ input.break {
   color: gray;
 }
 
-.active-page {
+#navbar .active {
   background-color: rgb(186, 207, 242);
+  font-weight: 500;
 }
 
 #search-component {
