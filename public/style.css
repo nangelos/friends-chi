@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: "freight-text-pro",georgia,serif;
 }
 
 a {
@@ -12,7 +12,13 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
+  padding: 1em;
+}
+
+#navbar a:hover {
+  background-color: rgb(186, 207, 242);
+  color: black;
+  text-decoration: underline;
 }
 
 input {
@@ -21,6 +27,10 @@ input {
 }
 
 h1 {
+  text-align: center;
+}
+
+p {
   text-align: center;
 }
 
@@ -233,20 +243,29 @@ input.break {
 }
 
 #navbar {
-  background-color: dodgerblue;
+  background-color: rgb(30, 144, 255);
   color: white;
+  border-radius: 15px;
+}
+
+#navbar:hover {
+  border-radius: 15px;
 }
 
 #navbar a {
   color: white;
+
 }
 
 #navbar-header {
   text-align: center;
-  /* background-color: skyblue; */
   margin-top: 0px;
   margin-bottom: 0px;
   color: gray;
+}
+
+.active-page {
+  background-color: rgb(186, 207, 242);
 }
 
 #search-component {

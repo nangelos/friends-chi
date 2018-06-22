@@ -762,7 +762,7 @@ class ChildScoring extends Component {
                     a. Child is strongly suspected to have, or is diagnosed with, a developmental disability and either the level of training Friends receive is not sufficient to appropriately work with the child and/or the Friends of the Children program model seems inappropriate for working with the child.
                 </p>
                   <p>
-                    b. Child demonstrates behavior issues that are extreme, and the level of training Friends receive is not sufficient to keep the child, him/herself and/or others physically safe during one-on-one and other activities witha a Friend.
+                    b. Child demonstrates behavior issues that are extreme, and the level of training Friends receive is not sufficient to keep the child, him/herself and/or others physically safe during one-on-one and other activities with a a Friend.
                 </p>
                   <p>
                     c. Child is strongly suspected to have, or is diagnosed with, some other severe disorder, such as Pervasive Developmental Disorder, Fetal Alcohol Spectrum Disorder, Reactive Attachment Disorder, or a psychotic disorder, and the level of training Firends receive is not sufficient to appropriately work with the child and/or the Friends of the Children program model seems inappropriate for working with the child.
@@ -788,7 +788,7 @@ class ChildScoring extends Component {
                 <div id="need-selector">
                   <select name="needSelector" onChange={this.handleTextboxChange}>
                     <option value="0">The child will most likely succeed, and is not really in need of a Friend</option>
-                    <option value="1">The child will most likely succeed, but could be hlped by a Friend</option>
+                    <option value="1">The child will most likely succeed, but could be helped by a Friend</option>
                     <option value="2">It is unclear if the child will succeed, and a Friend might make the difference</option>
                     <option value="3">The child will most likely struggle to succeed, and a Friend is likely to help</option>
                     <option value="4">The child will most likely struggle greatly to succeed, and has a great need for a Friend</option>

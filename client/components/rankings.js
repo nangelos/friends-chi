@@ -64,6 +64,8 @@ class Rankings extends Component {
             }
           </div>
         </div>
+        <br />
+        <span>*Total Scores of -100 mean child is out of scope for the program</span>
       </div>
     )
   }
