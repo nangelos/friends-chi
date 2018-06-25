@@ -15,6 +15,7 @@ export { default as EnvProtect } from './data-env-protect'
 export { default as ChildScoring } from './scoring'
 export { default as Rankings } from './rankings'
 export { default as ScoringNeed } from './scoring-need'
+export { default as ScoringScope } from './scoring-scope'
 
 
 export { Login, Signup } from './auth-form'
