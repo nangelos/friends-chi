@@ -12,7 +12,9 @@ export { default as ChildRisk } from './data-child-risk'
 export { default as EnvRisk } from './data-env-risk'
 export { default as ChildProtect } from './data-child-protect'
 export { default as EnvProtect } from './data-env-protect'
-export { default as ChildScoring } from './child-scoring'
+export { default as ChildScoring } from './scoring'
 export { default as Rankings } from './rankings'
+export { default as ScoringNeed } from './scoring-need'
+
 
 export { Login, Signup } from './auth-form'

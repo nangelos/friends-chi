@@ -20,7 +20,6 @@ export const addData = data =>
       .post('/api/data', data)
       .then(res => {
         dispatch(createData(res.data));
-        // history.push('/notes');
       })
       .catch(err => console.error(err));
 
