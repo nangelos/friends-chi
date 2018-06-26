@@ -19,6 +19,8 @@ export { default as ScoringScope } from './scoring-scope'
 export { default as ScoringStrengths } from './scoring-strengths'
 export { default as ScoringFriend } from './scoring-friend'
 export { default as ScoringTeacher } from './scoring-teacher'
+export { default as ScoringRisks } from './scoring-risks'
+export { default as ScoringHeader } from './scoring-header'
 
 
 export { Login, Signup } from './auth-form'
