@@ -16,6 +16,8 @@ export { default as ChildScoring } from './scoring'
 export { default as Rankings } from './rankings'
 export { default as ScoringNeed } from './scoring-need'
 export { default as ScoringScope } from './scoring-scope'
+export { default as ScoringStrengths } from './scoring-strengths'
+export { default as ScoringFriend } from './scoring-friend'
 
 
 export { Login, Signup } from './auth-form'

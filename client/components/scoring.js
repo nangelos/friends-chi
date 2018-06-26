@@ -1,138 +1,218 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { addScore } from '../store';
-import { ScoringNeed, ScoringScope } from './index';
-
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addScore } from '../store'
+import { ScoringStrengths, ScoringNeed, ScoringScope, ScoringFriend } from './index'
 
 class ChildScoring extends Component {
-  state = {
-    school: '',
-    childName: '',
-    gender: 'BOY',
-    totalScore: 0,
-    //friend questionnaire
-    friendAnger: 0,
-    friendWithdrawal: 0,
-    friendEsteem: 0,
-    friendAttendance: 0,
-    friendPerformance: 0,
-    friendPeerRelationships: 0,
-    friendAdultRelationships: 0,
-    friendHygiene: 0,
-    friendSexBehavior: 0,
-    friendFrustrated: 0,
-    friendDepression: 0,
-    friendCries: 0,
-    friendImpulsive: 0,
-    friendNervous: 0,
-    friendScore: 0,
-    //teacher questionnaire
-    teacherAnger: 0,
-    teacherWithdrawal: 0,
-    teacherEsteem: 0,
-    teacherAttendance: 0,
-    teacherPerformance: 0,
-    teacherPeerRelationships: 0,
-    teacherAdultRelationships: 0,
-    teacherHygiene: 0,
-    teacherSexBehavior: 0,
-    teacherFrustrated: 0,
-    teacherDepression: 0,
-    teacherCries: 0,
-    teacherImpulsive: 0,
-    teacherNervous: 0,
-    teacherScore: 0,
-    //environment risk
-    singleParent: false,
-    poverty: false,
-    teenParent: false,
-    neglect: false,
-    abuse: false,
-    foster: false,
-    drugs: false,
-    substance: false,
-    violence: false,
-    conflict: false,
-    criminal: false,
-    incarceration: false,
-    criminalHome: false,
-    gang: false,
-    mentalIll: false,
-    relocation: false,
-    education: false,
-    sibling: false,
-    neighborhood: false,
-    delinquentPeers: false,
-    monitoring: false,
-    riskScore: 0,
-    //child strengths
-    intelligent: false,
-    efficacy: false,
-    protectEsteem: false,
-    interpersonal: false,
-    initiative: false,
-    frustration: false,
-    soothe: false,
-    help: false,
-    temperament: false,
-    hope: false,
-    trying: false,
-    likesSchool: false,
-    humor: false,
-    //environment strengths
-    goodCaregiver: false,
-    supervision: false,
-    extended: false,
-    traditions: false,
-    community: false,
-    resources: false,
-    noFamilyStress: false,
-    noFamilyViolence: false,
-    noSubstanceAbuse: false,
-    consistentEmployment: false,
-    valueEducation: false,
-    strengthScore: 100,
-    //scope questionnaire
-    scope1: false,
-    scope2: false,
-    scopeSelector: 'YES',
-    //need questionnaire
-    needSelector: 0,
-    needScore: 0,
+  constructor() {
+    super()
+    this.state = {
+      school: '',
+      childName: '',
+      gender: 'BOY',
+      totalScore: 0,
+      //friend questionnaire
+      friendAnger: 0,
+      // friendWithdrawal: 0,
+      // friendEsteem: 0,
+      // friendAttendance: 0,
+      // friendPerformance: 0,
+      // friendPeerRelationships: 0,
+      // friendAdultRelationships: 0,
+      // friendHygiene: 0,
+      // friendSexBehavior: 0,
+      // friendFrustrated: 0,
+      // friendDepression: 0,
+      // friendCries: 0,
+      // friendImpulsive: 0,
+      // friendNervous: 0,
+      // friendScore: 0,
+      //teacher questionnaire
+      teacherAnger: 0,
+      teacherWithdrawal: 0,
+      teacherEsteem: 0,
+      teacherAttendance: 0,
+      teacherPerformance: 0,
+      teacherPeerRelationships: 0,
+      teacherAdultRelationships: 0,
+      teacherHygiene: 0,
+      teacherSexBehavior: 0,
+      teacherFrustrated: 0,
+      teacherDepression: 0,
+      teacherCries: 0,
+      teacherImpulsive: 0,
+      teacherNervous: 0,
+      teacherScore: 0,
+      //environment risk
+      singleParent: false,
+      poverty: false,
+      teenParent: false,
+      neglect: false,
+      abuse: false,
+      foster: false,
+      drugs: false,
+      substance: false,
+      violence: false,
+      conflict: false,
+      criminal: false,
+      incarceration: false,
+      criminalHome: false,
+      gang: false,
+      mentalIll: false,
+      relocation: false,
+      education: false,
+      sibling: false,
+      neighborhood: false,
+      delinquentPeers: false,
+      monitoring: false,
+      riskScore: 0,
+      // //child strengths
+      // intelligent: false,
+      // efficacy: false,
+      // protectEsteem: false,
+      // interpersonal: false,
+      // initiative: false,
+      // frustration: false,
+      // soothe: false,
+      // help: false,
+      // temperament: false,
+      // hope: false,
+      // trying: false,
+      // likesSchool: false,
+      // humor: false,
+      // //environment strengths
+      // goodCaregiver: false,
+      // supervision: false,
+      // extended: false,
+      // traditions: false,
+      // community: false,
+      // resources: false,
+      // noFamilyStress: false,
+      // noFamilyViolence: false,
+      // noSubstanceAbuse: false,
+      // consistentEmployment: false,
+      // valueEducation: false,
+      // strengthScore: 100,
+      //scope questionnaire
+      scope1: false,
+      scope2: false,
+      scopeSelector: 'YES',
+      //need questionnaire
+      needSelector: 0,
+      needScore: 0
+    }
   }
 
-  friendList = ['friendAnger', 'friendWithdrawal', 'friendEsteem', 'friendAttendance', 'friendPerformance', 'friendPeerRelationships', 'friendAdultRelationships', 'friendHygiene', 'friendSexBehavior', 'friendFrustrated', 'friendDepression', 'friendCries', 'friendImpulsive', 'friendNervous'];
+  friendList = [
+    'friendAnger',
+    'friendWithdrawal',
+    'friendEsteem',
+    'friendAttendance',
+    'friendPerformance',
+    'friendPeerRelationships',
+    'friendAdultRelationships',
+    'friendHygiene',
+    'friendSexBehavior',
+    'friendFrustrated',
+    'friendDepression',
+    'friendCries',
+    'friendImpulsive',
+    'friendNervous'
+  ]
 
-  teacherList = ['teacherAnger', 'teacherWithdrawal', 'teacherEsteem', 'teacherAttendance', 'teacherPerformance', 'teacherPeerRelationships', 'teacherAdultRelationships', 'teacherHygiene', 'teacherSexBehavior', 'teacherFrustrated', 'teacherDepression', 'teacherCries', 'teacherImpulsive', 'teacherNervous']
+  teacherList = [
+    'teacherAnger',
+    'teacherWithdrawal',
+    'teacherEsteem',
+    'teacherAttendance',
+    'teacherPerformance',
+    'teacherPeerRelationships',
+    'teacherAdultRelationships',
+    'teacherHygiene',
+    'teacherSexBehavior',
+    'teacherFrustrated',
+    'teacherDepression',
+    'teacherCries',
+    'teacherImpulsive',
+    'teacherNervous'
+  ]
 
-  riskList = ['singleParent', 'poverty', 'teenParent', 'neglect', 'abuse', 'foster', 'drugs', 'substance', 'violence', 'conflict', 'criminal', 'incarceration', 'criminalHome', 'gang', 'mentalIll', 'relocation', 'education', 'sibling', 'neighborhood', 'delinquentPeers', 'monitoring'];
+  riskList = [
+    'singleParent',
+    'poverty',
+    'teenParent',
+    'neglect',
+    'abuse',
+    'foster',
+    'drugs',
+    'substance',
+    'violence',
+    'conflict',
+    'criminal',
+    'incarceration',
+    'criminalHome',
+    'gang',
+    'mentalIll',
+    'relocation',
+    'education',
+    'sibling',
+    'neighborhood',
+    'delinquentPeers',
+    'monitoring'
+  ]
 
-  strengthsList = ['intelligent', 'efficacy', 'protectEsteem', 'interpersonal', 'initiative', 'frustration', 'soothe', 'help', 'temperament', 'hope', 'trying', 'likesSchool', 'humor', 'goodCaregiver', 'supervision', 'extended', 'traditions', 'community', 'resources', 'noFamilyStress', 'noFamilyViolence', 'noSubstanceAbuse', 'consistentEmployment', 'valueEducation'];
+  strengthsList = [
+    'intelligent',
+    'efficacy',
+    'protectEsteem',
+    'interpersonal',
+    'initiative',
+    'frustration',
+    'soothe',
+    'help',
+    'temperament',
+    'hope',
+    'trying',
+    'likesSchool',
+    'humor',
+    'goodCaregiver',
+    'supervision',
+    'extended',
+    'traditions',
+    'community',
+    'resources',
+    'noFamilyStress',
+    'noFamilyViolence',
+    'noSubstanceAbuse',
+    'consistentEmployment',
+    'valueEducation'
+  ]
 
-  scopeNeedList = [/*'scope1', 'scope2', 'scopeSelector',*/ 'needSelector'];
+  scopeNeedList = [/*'scope1', 'scope2', 'scopeSelector',*/ 'needSelector']
 
   handleCheckboxChange = evt => {
     let { name } = evt.target
+    // console.log({ [name]: !this.state[name] })
     this.setState({ [name]: !this.state[name] })
   }
 
-  handleTextboxChange = (evt) => {
+  handleTextboxChange = evt => {
     let { name, value } = evt.target
-    console.log('in textboxChange', name, value)
+    // console.log('in textboxChange', name, value)
     this.setState({ [name]: value.toUpperCase() })
   }
 
   handleSubmit = evt => {
-    evt.preventDefault();
-    const { createScore } = this.props;
-    const { scopeSelector } = this.state;
-    let scoreFriend = this.selectorScorer(this.state, this.friendList);
-    let scoreTeacher = this.selectorScorer(this.state, this.teacherList);
-    let scoreRisk = this.riskCheckboxScorer(this.state, this.riskList);
-    let scoreStrength = this.strengthsCheckboxScorer(this.state, this.strengthsList);
-    let scoreNeed = this.needScorer(this.state.needSelector);
-    let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed;
-    if (scopeSelector.toLowerCase() === 'no') scoreTotal = -100;
+    evt.preventDefault()
+    const { createScore } = this.props
+    const { scopeSelector } = this.state
+    let scoreFriend = this.selectorScorer(/*this.state,*/ this.friendList)
+    let scoreTeacher = this.selectorScorer(/*this.state,*/ this.teacherList)
+    let scoreRisk = this.riskCheckboxScorer(this.state, this.riskList)
+    let scoreStrength = this.strengthsCheckboxScorer(this.state, this.strengthsList)
+    let scoreNeed = this.needScorer(this.state.needSelector)
+    let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed
+    if (scopeSelector.toLowerCase() === 'no') scoreTotal = -100
     const pushObj = Object.assign(this.state, {
       friendScore: scoreFriend,
       teacherScore: scoreTeacher,
@@ -142,127 +222,142 @@ class ChildScoring extends Component {
       totalScore: scoreTotal
     })
     createScore(pushObj)
-    window.location.reload(false);
+    window.location.reload(false)
   }
 
-  getCount = (obj, list) => Object.keys(obj)
-    .filter(key => list.includes(key) && obj[key] === true).length;
+  getCount = (obj, list) =>
+    Object.keys(obj).filter(key => list.includes(key) && obj[key] === true).length
 
   riskCheckboxScorer = (obj, list) => {
-    let checkedCount = this.getCount(obj, list);
-    let value = 0;
-    if (checkedCount > 0 && checkedCount <= 2) value = 25;
-    if (checkedCount === 3) value = 50;
-    if (checkedCount > 3 && checkedCount <= 5) value = 75;
-    if (checkedCount >= 6) value = 100;
-    return value;
+    let checkedCount = this.getCount(obj, list)
+    let value = 0
+    if (checkedCount > 0 && checkedCount <= 2) value = 25
+    if (checkedCount === 3) value = 50
+    if (checkedCount > 3 && checkedCount <= 5) value = 75
+    if (checkedCount >= 6) value = 100
+    return value
   }
 
   strengthsCheckboxScorer = (obj, list) => {
-    let checkedCount = this.getCount(obj, list);
-    let value = 100;
-    if (checkedCount >= 6) value = 0;
-    if (checkedCount === 5) value = 25;
-    if (checkedCount === 4) value = 50;
-    if (checkedCount <= 3 && checkedCount > 0) value = 75;
-    if (checkedCount === 0) value = 100;
-    return value;
+    // console.log('in strengthsCheckboxScorer function', list, obj)
+    let checkedCount = this.getCount(obj, list)
+    let value = 100
+    if (checkedCount >= 6) value = 0
+    if (checkedCount === 5) value = 25
+    if (checkedCount === 4) value = 50
+    if (checkedCount <= 3 && checkedCount > 0) value = 75
+    if (checkedCount === 0) value = 100
+    // console.log(checkedCount, value);
+    return value
   }
 
   /*eslint complexity: 0*/
-  selectorScorer = (obj, list) => {
+  selectorScorer = (/*obj,*/ list) => {
     const scoreObj = {
       zeros: 0,
       ones: 0,
       twos: 0,
       threes: 0,
-      fours: 0,
+      fours: 0
     }
+    const obj = this.state
     for (let key in obj) {
       if (list.includes(key)) {
-        if (Number(obj[key]) === 0) scoreObj.zeros++;
-        if (Number(obj[key]) === 1) scoreObj.ones++;
-        if (Number(obj[key]) === 2) scoreObj.twos++;
-        if (Number(obj[key]) === 3) scoreObj.threes++;
-        if (Number(obj[key]) === 4) scoreObj.fours++;
+        if (Number(obj[key]) === 0) scoreObj.zeros++
+        if (Number(obj[key]) === 1) scoreObj.ones++
+        if (Number(obj[key]) === 2) scoreObj.twos++
+        if (Number(obj[key]) === 3) scoreObj.threes++
+        if (Number(obj[key]) === 4) scoreObj.fours++
       }
     }
-    let sum = (scoreObj.ones + scoreObj.twos * 2 + scoreObj.threes * 3 + scoreObj.fours * 4);
-    return sum;
+    let sum = scoreObj.ones + scoreObj.twos * 2 + scoreObj.threes * 3 + scoreObj.fours * 4
+    return sum
   }
 
-  needScorer = (val) => {
+  needScorer = val => {
     console.log(val, 'in the needScorer Function')
-    if (Number(val) === 0) return 0;
-    if (Number(val) === 1) return 25;
-    if (Number(val) === 2) return 50;
-    if (Number(val) === 3) return 75;
-    if (Number(val) === 4) return 100;
+    if (Number(val) === 0) return 0
+    if (Number(val) === 1) return 25
+    if (Number(val) === 2) return 50
+    if (Number(val) === 3) return 75
+    if (Number(val) === 4) return 100
   }
 
   /*eslint max-params: "off"*/
   finalScore = (name, scope, friend, teacher, risk, strength, need) => {
-    let score;
+    let score
     if (scope.toLowerCase() === 'no') {
       score = `${name} IS NOT IN SCOPE`
-      return score;
-    }
-    else {
-      score = friend + teacher + risk + strength + need;
-      return `Total Score: ${score}`;
+      return score
+    } else {
+      score = friend + teacher + risk + strength + need
+      return `Total Score: ${score}`
     }
   }
 
   updateStateScores = () => {
-    let scoreFriend = this.selectorScorer(this.state, this.friendList);
-    let scoreTeacher = this.selectorScorer(this.state, this.teacherList);
-    let scoreRisk = this.riskCheckboxScorer(this.state, this.riskList);
-    let scoreStrength = this.strengthsCheckboxScorer(this.state, this.strengthsList);
+    let scoreFriend = this.selectorScorer(/*this.state,*/ this.friendList)
+    let scoreTeacher = this.selectorScorer(/*this.state,*/ this.teacherList)
+    let scoreRisk = this.riskCheckboxScorer(/*this.state,*/ this.riskList)
+    let scoreStrength = this.strengthsCheckboxScorer(/*this.state,*/ this.strengthsList)
     // let scoreNeed = this.needScorer(this.state.needSelector);
-    let scoreNeed = this.needScorer(this.state.needSelector);
+    let scoreNeed = this.needScorer(this.state.needSelector)
 
-    let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed;
-    this.setState({
-      friendScore: scoreFriend,
-      teacherScore: scoreTeacher,
-      riskScore: scoreRisk,
-      strengthScore: scoreStrength,
-      needScore: scoreNeed,
-      totalScore: scoreTotal
-    }, () => {
-      console.log(
-        'friendScore: ', this.state.friendScore + '\n',
-        'teacherScore: ', this.state.teacherScore + '\n',
-        'riskScore: ', this.state.riskScore + '\n',
-        'strengthScore: ', this.state.strengthScore + '\n',
-        'needScore: ', this.state.needScore + '\n',
-        'totalScore: ', this.state.totalScore
-      )
-    })
+    let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed
+    this.setState(
+      {
+        friendScore: scoreFriend,
+        teacherScore: scoreTeacher,
+        riskScore: scoreRisk,
+        strengthScore: scoreStrength,
+        needScore: scoreNeed,
+        totalScore: scoreTotal
+      },
+      () => {
+        console.log(
+          'friendScore: ',
+          this.state.friendScore + '\n',
+          'teacherScore: ',
+          this.state.teacherScore + '\n',
+          'riskScore: ',
+          this.state.riskScore + '\n',
+          'strengthScore: ',
+          this.state.strengthScore + '\n',
+          'needScore: ',
+          this.state.needScore + '\n',
+          'totalScore: ',
+          this.state.totalScore
+        )
+      }
+    )
   }
 
-
   render() {
+    console.log(this.state)
     return (
       <div>
         <h1 className="section-header">Final Scoring for Child </h1>
         <div>
           <form onSubmit={this.handleSubmit}>
             <div className="topline">
-              School Name: <input
+              School Name:{' '}
+              <input
                 required={true}
                 className="scoring-topline-input"
                 type="text"
                 name="school"
                 placeholder="Enter School Name"
-                onChange={this.handleTextboxChange} />
-              Child Name: <input
+                onChange={this.handleTextboxChange}
+              />
+              Child Name:{' '}
+              <input
                 required={true}
                 className="scoring-topline-input"
                 type="text"
                 name="childName"
                 placeholder="Enter Child Name"
-                onChange={this.handleTextboxChange} />
+                onChange={this.handleTextboxChange}
+              />
               <div className="questionnaire-line">
                 Gender:
                 <select name="gender" onChange={this.handleTextboxChange}>
@@ -270,10 +365,20 @@ class ChildScoring extends Component {
                   <option value="Girl">Girl</option>
                 </select>
               </div>
-              <h1 id="total-score">{this.finalScore(this.state.childName, this.state.scopeSelector, this.selectorScorer(this.state, this.friendList), this.selectorScorer(this.state, this.teacherList), this.riskCheckboxScorer(this.state, this.riskList), this.strengthsCheckboxScorer(this.state, this.strengthsList), this.needScorer(this.state.needSelector))}</h1>
+              <h1 id="total-score">
+                {this.finalScore(
+                  this.state.childName,
+                  this.state.scopeSelector,
+                  this.selectorScorer(/*this.state,*/ this.friendList),
+                  this.selectorScorer(/*this.state,*/ this.teacherList),
+                  this.riskCheckboxScorer(this.state, this.riskList),
+                  this.strengthsCheckboxScorer(this.state, this.strengthsList),
+                  this.needScorer(this.state.needSelector)
+                )}
+              </h1>
             </div>
             {/* FRIEND QUESTIONNAIRE */}
-            <h2 className="section-header" id="scoring-header">Friend Questionnaire</h2>
+            {/* <h2 className="section-header" id="scoring-header">Friend Questionnaire</h2>
             <div className="score-section" id="score">
               <div className="questionnaire-line">
                 Aggressive Anger Problems
@@ -416,9 +521,17 @@ class ChildScoring extends Component {
                 </select>
               </div>
               <h1 className="score-display">Score: {this.selectorScorer(this.state, this.friendList)}</h1>
-            </div>
+            </div> */}
+            <ScoringFriend
+              handleTextboxChange={this.handleTextboxChange}
+              selectorScorer={this.selectorScorer}
+              friendList={this.friendList}
+              {...this.state}
+            />
             {/* TEACHER QUESTIONNAIRE */}
-            <h2 className="section-header" id="scoring-header">Teacher Questionnaire</h2>
+            <h2 className="section-header" id="scoring-header">
+              Teacher Questionnaire
+            </h2>
             <div className="score-section" id="score">
               <div className="questionnaire-line">
                 Aggressive Anger Problems
@@ -560,205 +673,234 @@ class ChildScoring extends Component {
                   <option value="4">Severe Problem</option>
                 </select>
               </div>
-              <h1 className="score-display">Score: {this.selectorScorer(this.state, this.teacherList)}</h1>
+              <h1 className="score-display">
+                Score: {this.selectorScorer(/*this.state,*/ this.teacherList)}
+              </h1>
             </div>
             {/* ENVIRONMENTAL QUESTIONNAIRE */}
-            <h2 className="section-header" id="scoring-header">Environmental Risks</h2>
+            <h2 className="section-header" id="scoring-header">
+              Environmental Risks
+            </h2>
             <div className="score-section" id="score">
               <div className="score-line">
                 <input type="checkbox" name="singleParent" onChange={this.handleCheckboxChange} />
                 Single Parent Family
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="poverty" onChange={this.handleCheckboxChange} />
                 Living in Poverty
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="teenParent" onChange={this.handleCheckboxChange} />
                 Parent Was a Teen Parent
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="neglect" onChange={this.handleCheckboxChange} />
                 History of Neglect
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="abuse" onChange={this.handleCheckboxChange} />
                 Physical/Sexual Abuse
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="foster" onChange={this.handleCheckboxChange} />
                 In Foster Care
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="drugs" onChange={this.handleCheckboxChange} />
                 Family History of Drug/Alcohol Abuse
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="substance" onChange={this.handleCheckboxChange} />
                 Substance Abuse in Home
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="violence" onChange={this.handleCheckboxChange} />
                 Domestic Violence in Home
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="conflict" onChange={this.handleCheckboxChange} />
                 Ongoing Family Conflict
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="criminal" onChange={this.handleCheckboxChange} />
                 Parent Criminal History
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="incarceration" onChange={this.handleCheckboxChange} />
                 Parent Incarcerated (past/present)
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="criminalHome" onChange={this.handleCheckboxChange} />
                 Criminal Activity in Home
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="gang" onChange={this.handleCheckboxChange} />
                 Family Gang Activity
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="mentalIll" onChange={this.handleCheckboxChange} />
                 Parent with Mental Illness
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="relocation" onChange={this.handleCheckboxChange} />
                 Frequest Relocation/Unstable Living
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="education" onChange={this.handleCheckboxChange} />
                 Low Value on Education
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="sibling" onChange={this.handleCheckboxChange} />
                 Older Sibling with High-Risk Behavior
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="neighborhood" onChange={this.handleCheckboxChange} />
                 High Crime/Violent Neighborhood
-                </div>
+              </div>
               <div className="score-line">
-                <input type="checkbox" name="delinquentPeers" onChange={this.handleCheckboxChange} />
+                <input
+                  type="checkbox"
+                  name="delinquentPeers"
+                  onChange={this.handleCheckboxChange}
+                />
                 Exposure to Delinquent Peers
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="monitoring" onChange={this.handleCheckboxChange} />
                 Lack of Parental Monitoring
-                </div>
+              </div>
               <div className="riskscore-div">
-                <h1 className="risk-score">Score: {this.riskCheckboxScorer(this.state, this.riskList)}</h1>
+                <h1 className="risk-score">
+                  Score: {this.riskCheckboxScorer(this.state, this.riskList)}
+                </h1>
               </div>
             </div>
             {/* STRENGTHS QUESTIONNAIRE */}
-            <h2 className="section-header" id="scoring-header">Child Strengths</h2>
+            <h2 className="section-header" id="scoring-header">
+              Child Strengths
+            </h2>
             <div className="score-section" id="score">
               <div className="score-line">
                 <input type="checkbox" name="intelligent" onChange={this.handleCheckboxChange} />
                 Appears Highly Intelligent
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="efficacy" onChange={this.handleCheckboxChange} />
                 Demonstrates Self-Efficacy
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="protectEsteem" onChange={this.handleCheckboxChange} />
                 Healthy Self Exteem
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="interpersonal" onChange={this.handleCheckboxChange} />
                 Good Interpersonal Skills
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="initiative" onChange={this.handleCheckboxChange} />
                 Takes Initiative
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="frustration" onChange={this.handleCheckboxChange} />
                 Age-appropriate Frustration
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="soothe" onChange={this.handleCheckboxChange} />
                 Ability to Self-soothe
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="help" onChange={this.handleCheckboxChange} />
                 Seeks Help/Support
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="temperament" onChange={this.handleCheckboxChange} />
                 Easy-Going Temperament
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="hope" onChange={this.handleCheckboxChange} />
                 Has a Sense of Hope
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="trying" onChange={this.handleCheckboxChange} />
                 Willing to Keep Trying
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="likesSchool" onChange={this.handleCheckboxChange} />
                 Likes School/Wants to Be There
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="humor" onChange={this.handleCheckboxChange} />
                 Has a Sense of Humor
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="goodCaregiver" onChange={this.handleCheckboxChange} />
                 Good Relationship w/ 1+ Caregiver
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="supervision" onChange={this.handleCheckboxChange} />
                 Family Monitors/Supervises Child
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="extended" onChange={this.handleCheckboxChange} />
                 Extended Family Support
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="traditions" onChange={this.handleCheckboxChange} />
                 Strong Positive Traditions
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="community" onChange={this.handleCheckboxChange} />
                 Strong Community Ties
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="resources" onChange={this.handleCheckboxChange} />
                 Access to Basic Resources
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="noFamilyStress" onChange={this.handleCheckboxChange} />
                 Family Manages Stress Well
-                </div>
+              </div>
               <div className="score-line">
-                <input type="checkbox" name="noFamilyViolence" onChange={this.handleCheckboxChange} />
+                <input
+                  type="checkbox"
+                  name="noFamilyViolence"
+                  onChange={this.handleCheckboxChange}
+                />
                 No Violence in Home
-                </div>
+              </div>
               <div className="score-line">
-                <input type="checkbox" name="noSubstanceAbuse" onChange={this.handleCheckboxChange} />
+                <input
+                  type="checkbox"
+                  name="noSubstanceAbuse"
+                  onChange={this.handleCheckboxChange}
+                />
                 No Family History of Substance Abuse
-                </div>
+              </div>
               <div className="score-line">
-                <input type="checkbox" name="consistentEmployment" onChange={this.handleCheckboxChange} />
+                <input
+                  type="checkbox"
+                  name="consistentEmployment"
+                  onChange={this.handleCheckboxChange}
+                />
                 Caregivers Have Consistent Employment
-                </div>
+              </div>
               <div className="score-line">
                 <input type="checkbox" name="valueEducation" onChange={this.handleCheckboxChange} />
                 Family Values Education
-                </div>
+              </div>
               <div className="riskscore-div">
-                <h1 className="risk-score">Score: {this.strengthsCheckboxScorer(this.state, this.strengthsList)}</h1>
+                <h1 className="risk-score">
+                  Score: {this.strengthsCheckboxScorer(this.state, this.strengthsList)}
+                </h1>
               </div>
             </div>
-            <ScoringScope
-              handleTextboxChange={this.handleTextboxChange}
-            />
+            {/* <ScoringStrengths
+              handleCheckboxChange={this.handleCheckboxChange}
+              strengthsCheckboxScorer={this.strengthsCheckboxScorer}
+              strengthsList={this.strengthsList}
+            /> */}
+            <ScoringScope handleTextboxChange={this.handleTextboxChange} />
             <ScoringNeed
               needScorer={this.needScorer}
               handleTextboxChange={this.handleTextboxChange}
@@ -768,15 +910,21 @@ class ChildScoring extends Component {
             <input type="submit" value="Submit" />
           </form>
         </div>
-      </div >
+      </div>
     )
   }
 }
 
-const mapState = state => ({ state })
+const mapState = state => {
+  console.log('here is state in scoring.js', state)
+  return {
+    state,
+    friendAnger: state.friendAnger
+  }
+}
+
 const mapDispatch = dispatch => ({
   createScore: data => dispatch(addScore(data))
-});
+})
 
-export default connect(mapState, mapDispatch)(ChildScoring);
-
+export default connect(mapState, mapDispatch)(ChildScoring)
