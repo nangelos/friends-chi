@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addScore } from '../store'
+import { addScore } from '../../store'
+import { friendList, teacherList, strengthsList, riskList } from '../../constants'
 import {
   ScoringStrengths,
   ScoringNeed,
@@ -9,7 +10,7 @@ import {
   ScoringTeacher,
   ScoringRisks,
   ScoringHeader
-} from './index'
+} from '../index'
 
 class ChildScoring extends Component {
   constructor() {
@@ -111,102 +112,13 @@ class ChildScoring extends Component {
     }
   }
 
-  friendList = [
-    'friendAnger',
-    'friendWithdrawal',
-    'friendEsteem',
-    'friendAttendance',
-    'friendPerformance',
-    'friendPeerRelationships',
-    'friendAdultRelationships',
-    'friendHygiene',
-    'friendSexBehavior',
-    'friendFrustrated',
-    'friendDepression',
-    'friendCries',
-    'friendImpulsive',
-    'friendNervous'
-  ]
-
-  teacherList = [
-    'teacherAnger',
-    'teacherWithdrawal',
-    'teacherEsteem',
-    'teacherAttendance',
-    'teacherPerformance',
-    'teacherPeerRelationships',
-    'teacherAdultRelationships',
-    'teacherHygiene',
-    'teacherSexBehavior',
-    'teacherFrustrated',
-    'teacherDepression',
-    'teacherCries',
-    'teacherImpulsive',
-    'teacherNervous'
-  ]
-
-  riskList = [
-    'singleParent',
-    'poverty',
-    'teenParent',
-    'neglect',
-    'abuse',
-    'foster',
-    'drugs',
-    'substance',
-    'violence',
-    'conflict',
-    'criminal',
-    'incarceration',
-    'criminalHome',
-    'gang',
-    'mentalIll',
-    'relocation',
-    'education',
-    'sibling',
-    'neighborhood',
-    'delinquentPeers',
-    'monitoring'
-  ]
-
-  strengthsList = [
-    'intelligent',
-    'efficacy',
-    'protectEsteem',
-    'interpersonal',
-    'initiative',
-    'frustration',
-    'soothe',
-    'help',
-    'temperament',
-    'hope',
-    'trying',
-    'likesSchool',
-    'humor',
-    'goodCaregiver',
-    'supervision',
-    'extended',
-    'traditions',
-    'community',
-    'resources',
-    'noFamilyStress',
-    'noFamilyViolence',
-    'noSubstanceAbuse',
-    'consistentEmployment',
-    'valueEducation'
-  ]
-
-  scopeNeedList = [/*'scope1', 'scope2', 'scopeSelector',*/ 'needSelector']
-
   handleCheckboxChange = evt => {
     let { name } = evt.target
-    // console.log({ [name]: !this.state[name] })
     this.setState({ [name]: !this.state[name] })
   }
 
   handleTextboxChange = evt => {
     let { name, value } = evt.target
-    // console.log('in textboxChange', name, value)
     this.setState({ [name]: value.toUpperCase() })
   }
 
@@ -214,10 +126,10 @@ class ChildScoring extends Component {
     evt.preventDefault()
     const { createScore } = this.props
     const { scopeSelector } = this.state
-    let scoreFriend = this.selectorScorer(/*this.state,*/ this.friendList)
-    let scoreTeacher = this.selectorScorer(/*this.state,*/ this.teacherList)
-    let scoreRisk = this.riskCheckboxScorer(/*this.state,*/ this.riskList)
-    let scoreStrength = this.strengthsCheckboxScorer(/*this.state,*/ this.strengthsList)
+    let scoreFriend = this.selectorScorer(this.friendList)
+    let scoreTeacher = this.selectorScorer(this.teacherList)
+    let scoreRisk = this.riskCheckboxScorer(this.riskList)
+    let scoreStrength = this.strengthsCheckboxScorer(this.strengthsList)
     let scoreNeed = this.needScorer(this.state.needSelector)
     let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed
     if (scopeSelector.toLowerCase() === 'no') scoreTotal = -100
@@ -233,9 +145,11 @@ class ChildScoring extends Component {
     window.location.reload(false)
   }
 
-  getCount = (obj, list) => Object.keys(obj).filter(key => list.includes(key) && obj[key] === true).length
+  getCount = (obj, list) => Object.keys(obj)
+    .filter(key => list
+      .includes(key) && obj[key] === true).length
 
-  riskCheckboxScorer = (/*obj,*/ list) => {
+  riskCheckboxScorer = (list) => {
     const obj = this.state
     let checkedCount = this.getCount(obj, list)
     let value = 0
@@ -246,8 +160,7 @@ class ChildScoring extends Component {
     return value
   }
 
-  strengthsCheckboxScorer = (/*obj,*/ list) => {
-    // console.log('in strengthsCheckboxScorer function', list, obj)
+  strengthsCheckboxScorer = (list) => {
     const obj = this.state
     let checkedCount = this.getCount(obj, list)
     let value = 100
@@ -256,12 +169,11 @@ class ChildScoring extends Component {
     if (checkedCount === 4) value = 50
     if (checkedCount <= 3 && checkedCount > 0) value = 75
     if (checkedCount === 0) value = 100
-    // console.log(checkedCount, value);
     return value
   }
 
   /*eslint complexity: 0*/
-  selectorScorer = (/*obj,*/ list) => {
+  selectorScorer = (list) => {
     const scoreObj = {
       zeros: 0,
       ones: 0,
@@ -304,11 +216,10 @@ class ChildScoring extends Component {
   }
 
   updateStateScores = () => {
-    let scoreFriend = this.selectorScorer(/*this.state,*/ this.friendList)
-    let scoreTeacher = this.selectorScorer(/*this.state,*/ this.teacherList)
-    let scoreRisk = this.riskCheckboxScorer(/*this.state,*/ this.riskList)
-    let scoreStrength = this.strengthsCheckboxScorer(/*this.state,*/ this.strengthsList)
-    // let scoreNeed = this.needScorer(this.state.needSelector);
+    let scoreFriend = this.selectorScorer(this.friendList)
+    let scoreTeacher = this.selectorScorer(this.teacherList)
+    let scoreRisk = this.riskCheckboxScorer(this.riskList)
+    let scoreStrength = this.strengthsCheckboxScorer(this.strengthsList)
     let scoreNeed = this.needScorer(this.state.needSelector)
 
     let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed
@@ -348,10 +259,10 @@ class ChildScoring extends Component {
           <form onSubmit={this.handleSubmit}>
             <ScoringHeader
               childName={this.state.childName}
-              friendList={this.friendList}
-              teacherList={this.teacherList}
-              riskList={this.riskList}
-              strengthsList={this.strengthsList}
+              friendList={friendList}
+              teacherList={teacherList}
+              riskList={riskList}
+              strengthsList={strengthsList}
               handleTextboxChange={this.handleTextboxChange}
               scopeSelector={this.state.scopeSelector}
               selectorScorer={this.selectorScorer}
@@ -361,65 +272,27 @@ class ChildScoring extends Component {
               finalScore={this.finalScore}
               {...this.state}
             />
-            {/* <div className="topline">
-              School Name:{' '}
-              <input
-                required={true}
-                className="scoring-topline-input"
-                type="text"
-                name="school"
-                placeholder="Enter School Name"
-                onChange={this.handleTextboxChange}
-              />
-              Child Name:{' '}
-              <input
-                required={true}
-                className="scoring-topline-input"
-                type="text"
-                name="childName"
-                placeholder="Enter Child Name"
-                onChange={this.handleTextboxChange}
-              />
-              <div className="questionnaire-line">
-                Gender:
-                <select name="gender" onChange={this.handleTextboxChange}>
-                  <option value="Boy">Boy</option>
-                  <option value="Girl">Girl</option>
-                </select>
-              </div>
-              <h1 id="total-score">
-                {this.finalScore(
-                  this.state.childName,
-                  this.state.scopeSelector,
-                  this.selectorScorer(this.friendList),
-                  this.selectorScorer(this.teacherList),
-                  this.riskCheckboxScorer(this.riskList),
-                  this.strengthsCheckboxScorer( this.strengthsList),
-                  this.needScorer(this.state.needSelector)
-                )}
-              </h1>
-            </div> */}
             <ScoringFriend
               handleTextboxChange={this.handleTextboxChange}
               selectorScorer={this.selectorScorer}
-              friendList={this.friendList}
+              friendList={friendList}
               {...this.state}
             />
             <ScoringTeacher
               handleTextboxChange={this.handleTextboxChange}
               selectorScorer={this.selectorScorer}
-              teacherList={this.teacherList}
+              teacherList={teacherList}
               {...this.state}
             />
             <ScoringRisks
               riskCheckboxScorer={this.riskCheckboxScorer}
-              riskList={this.riskList}
+              riskList={riskList}
               handleCheckboxChange={this.handleCheckboxChange}
               {...this.state}
             />
             <ScoringStrengths
               strengthsCheckboxScorer={this.strengthsCheckboxScorer}
-              strengthsList={this.strengthsList}
+              strengthsList={strengthsList}
               handleCheckboxChange={this.handleCheckboxChange}
               {...this.state}
             />
