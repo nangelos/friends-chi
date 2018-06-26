@@ -172,7 +172,6 @@ class ChildScoring extends Component {
     return value
   }
 
-  /*eslint complexity: 0*/
   selectorScorer = (list) => {
     const scoreObj = {
       zeros: 0,
@@ -213,42 +212,6 @@ class ChildScoring extends Component {
       score = friend + teacher + risk + strength + need
       return `Total Score: ${score}`
     }
-  }
-
-  updateStateScores = () => {
-    let scoreFriend = this.selectorScorer(this.friendList)
-    let scoreTeacher = this.selectorScorer(this.teacherList)
-    let scoreRisk = this.riskCheckboxScorer(this.riskList)
-    let scoreStrength = this.strengthsCheckboxScorer(this.strengthsList)
-    let scoreNeed = this.needScorer(this.state.needSelector)
-
-    let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed
-    this.setState(
-      {
-        friendScore: scoreFriend,
-        teacherScore: scoreTeacher,
-        riskScore: scoreRisk,
-        strengthScore: scoreStrength,
-        needScore: scoreNeed,
-        totalScore: scoreTotal
-      },
-      () => {
-        console.log(
-          'friendScore: ',
-          this.state.friendScore + '\n',
-          'teacherScore: ',
-          this.state.teacherScore + '\n',
-          'riskScore: ',
-          this.state.riskScore + '\n',
-          'strengthScore: ',
-          this.state.strengthScore + '\n',
-          'needScore: ',
-          this.state.needScore + '\n',
-          'totalScore: ',
-          this.state.totalScore
-        )
-      }
-    )
   }
 
   render() {

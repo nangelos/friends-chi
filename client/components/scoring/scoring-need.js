@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ScoringNeed = (props) => {
+const ScoringNeed = props => {
 
   return (
     <div>

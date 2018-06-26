@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ScoringScope = (props) => {
+const ScoringScope = props => {
 
   return (
     <div>

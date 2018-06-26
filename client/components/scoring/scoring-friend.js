@@ -1,7 +1,7 @@
 import React from 'react'
 import { selectOptions } from '../../constants'
 
-const ScoringFriend = (props) => {
+const ScoringFriend = props => {
   return (
     <div>
       {/* FRIEND QUESTIONNAIRE */}
