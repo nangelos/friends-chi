@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-const ScoringFriend = (props) => {
+const ScoringTeacher = (props) => {
   return (
     <div>
-      {/* FRIEND QUESTIONNAIRE */}
+      {/* TEACHER QUESTIONNAIRE */}
       <h2 className="section-header" id="scoring-header">
-        Friend Questionnaire
-        </h2>
+        Teacher Questionnaire
+            </h2>
       <div className="score-section" id="score">
         <div className="questionnaire-line">
           Aggressive Anger Problems
-            <select name="friendAnger" onChange={props.handleTextboxChange}>
+                <select name="teacherAnger" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -20,7 +20,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Social Withdrawal
-            <select name="friendWithdrawal" onChange={props.handleTextboxChange}>
+                <select name="teacherWithdrawal" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -30,7 +30,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Low Self-Esteem
-            <select name="friendEsteem" onChange={props.handleTextboxChange}>
+                <select name="teacherEsteem" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -40,7 +40,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Poor School Attendance
-            <select name="friendAttendance" onChange={props.handleTextboxChange}>
+                <select name="teacherAttendance" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -50,7 +50,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Poor Work Habits/Performance
-            <select name="friendPerformance" onChange={props.handleTextboxChange}>
+                <select name="teacherPerformance" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -60,7 +60,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Poor Peer Relationships
-            <select name="friendPeerRelationships" onChange={props.handleTextboxChange}>
+                <select name="teacherPeerRelationships" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -70,7 +70,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Poor Adult Relationships
-            <select name="friendAdultRelationships" onChange={props.handleTextboxChange}>
+                <select name="teacherAdultRelationships" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -80,7 +80,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Poor Hygiene/Health Concerns
-            <select name="friendHygiene" onChange={props.handleTextboxChange}>
+                <select name="teacherHygiene" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -90,7 +90,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Sexualized Behavior
-            <select name="friendSexBehavior" onChange={props.handleTextboxChange}>
+                <select name="teacherSexBehavior" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -100,7 +100,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Easily Frustrated/Poor Problem Solving
-            <select name="friendFrustrated" onChange={props.handleTextboxChange}>
+                <select name="teacherFrustrated" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -110,7 +110,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Depression/Sadness/Grief
-            <select name="friendDepression" onChange={props.handleTextboxChange}>
+                <select name="teacherDepression" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -120,7 +120,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Cries Easily/Often
-            <select name="friendCries" onChange={props.handleTextboxChange}>
+                <select name="teacherCries" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -130,7 +130,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Poor Impulse Control/Inattentive
-            <select name="friendImpulsive" onChange={props.handleTextboxChange}>
+                <select name="teacherImpulsive" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -140,7 +140,7 @@ const ScoringFriend = (props) => {
         </div>
         <div className="questionnaire-line">
           Nervous Habits
-            <select name="friendNervous" onChange={props.handleTextboxChange}>
+                <select name="teacherNervous" onChange={props.handleTextboxChange}>
             <option value="0">Behavior Absent</option>
             <option value="1">Not a Problem</option>
             <option value="2">Mild Problem</option>
@@ -149,11 +149,11 @@ const ScoringFriend = (props) => {
           </select>
         </div>
         <h1 className="score-display">
-          Score: {props.selectorScorer(props.friendList)}
+          Score: {props.selectorScorer(props.teacherList)}
         </h1>
       </div>
     </div>
   )
 }
 
-export default ScoringFriend;
+export default ScoringTeacher;

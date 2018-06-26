@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addScore } from '../store'
-import { ScoringStrengths, ScoringNeed, ScoringScope, ScoringFriend } from './index'
+import { ScoringStrengths, ScoringNeed, ScoringScope, ScoringFriend, ScoringTeacher } from './index'
 
 class ChildScoring extends Component {
   constructor() {
@@ -13,21 +13,21 @@ class ChildScoring extends Component {
       totalScore: 0,
       //friend questionnaire
       friendAnger: 0,
-      // friendWithdrawal: 0,
-      // friendEsteem: 0,
-      // friendAttendance: 0,
-      // friendPerformance: 0,
-      // friendPeerRelationships: 0,
-      // friendAdultRelationships: 0,
-      // friendHygiene: 0,
-      // friendSexBehavior: 0,
-      // friendFrustrated: 0,
-      // friendDepression: 0,
-      // friendCries: 0,
-      // friendImpulsive: 0,
-      // friendNervous: 0,
-      // friendScore: 0,
-      //teacher questionnaire
+      friendWithdrawal: 0,
+      friendEsteem: 0,
+      friendAttendance: 0,
+      friendPerformance: 0,
+      friendPeerRelationships: 0,
+      friendAdultRelationships: 0,
+      friendHygiene: 0,
+      friendSexBehavior: 0,
+      friendFrustrated: 0,
+      friendDepression: 0,
+      friendCries: 0,
+      friendImpulsive: 0,
+      friendNervous: 0,
+      friendScore: 0,
+      // teacher questionnaire
       teacherAnger: 0,
       teacherWithdrawal: 0,
       teacherEsteem: 0,
@@ -67,32 +67,32 @@ class ChildScoring extends Component {
       monitoring: false,
       riskScore: 0,
       // //child strengths
-      // intelligent: false,
-      // efficacy: false,
-      // protectEsteem: false,
-      // interpersonal: false,
-      // initiative: false,
-      // frustration: false,
-      // soothe: false,
-      // help: false,
-      // temperament: false,
-      // hope: false,
-      // trying: false,
-      // likesSchool: false,
-      // humor: false,
-      // //environment strengths
-      // goodCaregiver: false,
-      // supervision: false,
-      // extended: false,
-      // traditions: false,
-      // community: false,
-      // resources: false,
-      // noFamilyStress: false,
-      // noFamilyViolence: false,
-      // noSubstanceAbuse: false,
-      // consistentEmployment: false,
-      // valueEducation: false,
-      // strengthScore: 100,
+      intelligent: false,
+      efficacy: false,
+      protectEsteem: false,
+      interpersonal: false,
+      initiative: false,
+      frustration: false,
+      soothe: false,
+      help: false,
+      temperament: false,
+      hope: false,
+      trying: false,
+      likesSchool: false,
+      humor: false,
+      //environment strengths
+      goodCaregiver: false,
+      supervision: false,
+      extended: false,
+      traditions: false,
+      community: false,
+      resources: false,
+      noFamilyStress: false,
+      noFamilyViolence: false,
+      noSubstanceAbuse: false,
+      consistentEmployment: false,
+      valueEducation: false,
+      strengthScore: 100,
       //scope questionnaire
       scope1: false,
       scope2: false,
@@ -377,159 +377,20 @@ class ChildScoring extends Component {
                 )}
               </h1>
             </div>
-            {/* FRIEND QUESTIONNAIRE */}
-            {/* <h2 className="section-header" id="scoring-header">Friend Questionnaire</h2>
-            <div className="score-section" id="score">
-              <div className="questionnaire-line">
-                Aggressive Anger Problems
-                <select name="friendAnger" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Social Withdrawal
-                <select name="friendWithdrawal" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Low Self-Esteem
-                <select name="friendEsteem" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Poor School Attendance
-                <select name="friendAttendance" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Poor Work Habits/Performance
-                <select name="friendPerformance" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Poor Peer Relationships
-                <select name="friendPeerRelationships" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Poor Adult Relationships
-                <select name="friendAdultRelationships" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Poor Hygiene/Health Concerns
-                <select name="friendHygiene" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Sexualized Behavior
-                <select name="friendSexBehavior" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Easily Frustrated/Poor Problem Solving
-                <select name="friendFrustrated" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Depression/Sadness/Grief
-                <select name="friendDepression" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Cries Easily/Often
-                <select name="friendCries" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Poor Impulse Control/Inattentive
-                <select name="friendImpulsive" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <div className="questionnaire-line">
-                Nervous Habits
-                <select name="friendNervous" onChange={this.handleTextboxChange}>
-                  <option value="0">Behavior Absent</option>
-                  <option value="1">Not a Problem</option>
-                  <option value="2">Mild Problem</option>
-                  <option value="3">Moderate Problem</option>
-                  <option value="4">Severe Problem</option>
-                </select>
-              </div>
-              <h1 className="score-display">Score: {this.selectorScorer(this.state, this.friendList)}</h1>
-            </div> */}
             <ScoringFriend
               handleTextboxChange={this.handleTextboxChange}
               selectorScorer={this.selectorScorer}
               friendList={this.friendList}
               {...this.state}
             />
+            <ScoringTeacher
+              handleTextboxChange={this.handleTextboxChange}
+              selectorScorer={this.selectorScorer}
+              teacherList={this.teacherList}
+              {...this.state}
+            />
             {/* TEACHER QUESTIONNAIRE */}
-            <h2 className="section-header" id="scoring-header">
+            {/* <h2 className="section-header" id="scoring-header">
               Teacher Questionnaire
             </h2>
             <div className="score-section" id="score">
@@ -674,9 +535,9 @@ class ChildScoring extends Component {
                 </select>
               </div>
               <h1 className="score-display">
-                Score: {this.selectorScorer(/*this.state,*/ this.teacherList)}
+                Score: {this.selectorScorer(this.teacherList)}
               </h1>
-            </div>
+            </div> */}
             {/* ENVIRONMENTAL QUESTIONNAIRE */}
             <h2 className="section-header" id="scoring-header">
               Environmental Risks
