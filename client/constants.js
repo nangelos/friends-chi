@@ -82,3 +82,11 @@ export const strengthsList = [
   'consistentEmployment',
   'valueEducation'
 ]
+export const selectOptions = [
+  'Behavior Absent',
+  'Not a Problem',
+  'Mild Problem',
+  'Moderate Problem',
+  'Severe Problem',
+]
+

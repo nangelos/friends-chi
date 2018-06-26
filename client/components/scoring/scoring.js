@@ -126,10 +126,10 @@ class ChildScoring extends Component {
     evt.preventDefault()
     const { createScore } = this.props
     const { scopeSelector } = this.state
-    let scoreFriend = this.selectorScorer(this.friendList)
-    let scoreTeacher = this.selectorScorer(this.teacherList)
-    let scoreRisk = this.riskCheckboxScorer(this.riskList)
-    let scoreStrength = this.strengthsCheckboxScorer(this.strengthsList)
+    let scoreFriend = this.selectorScorer(friendList)
+    let scoreTeacher = this.selectorScorer(teacherList)
+    let scoreRisk = this.riskCheckboxScorer(riskList)
+    let scoreStrength = this.strengthsCheckboxScorer(strengthsList)
     let scoreNeed = this.needScorer(this.state.needSelector)
     let scoreTotal = scoreFriend + scoreTeacher + scoreRisk + scoreStrength + scoreNeed
     if (scopeSelector.toLowerCase() === 'no') scoreTotal = -100
