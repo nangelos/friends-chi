@@ -12,12 +12,12 @@ border-radius: 15px 15px;
 background: ${p => p.active ? 'rgb(186, 207, 242)' : 'rgb(30, 144, 255)'};
 }
 `
-const navLinks = [{ link: 'home', text: 'Home' }, { link: 'notes', text: 'New Note' }, { link: 'children', text: 'Search Notes' }, { link: 'scoring', text: 'Child Scoring' }, { link: 'rankings', text: 'Rankings' }];
+const loggedInLinks = [{ link: 'home', text: 'Home' }, { link: 'notes', text: 'New Note' }, { link: 'children', text: 'Search Notes' }, { link: 'scoring', text: 'Child Scoring' }, { link: 'rankings', text: 'Rankings' }];
 
 
 class Navbar extends Component {
   state = {
-    active: 'notes'
+    active: 'home'
   }
 
   render() {
@@ -26,19 +26,19 @@ class Navbar extends Component {
     return (
       <div>
         <h1 id="navbar-header">Friends of the Children</h1>
-        <nav /*id="navbar"*/>
+        <nav>
           {isLoggedIn ? (
             <div id="navbar">
               {/* The navbar will show these links after you log in */}
               {
-                navLinks.map(tab => <Tab key={tab.link} onClick={() => this.setState({ active: tab.link })} active={active === tab.link}><Link to={'/' + tab.link}>{tab.text}</Link></Tab>)
+                loggedInLinks.map(tab => <Tab key={tab.link} onClick={() => this.setState({ active: tab.link })} active={active === tab.link}><Link to={'/' + tab.link}>{tab.text}</Link></Tab>)
               }
               <a href="#" onClick={handleClick}>
                 Logout
                 </a>
             </div>
           ) : (
-              <div>
+              <div id="navbar">
                 {/* The navbar will show these links before you log in */}
                 <Link to="/login">Login</Link>
                 <Link to="/signup">Sign Up</Link>
