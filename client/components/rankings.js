@@ -27,7 +27,7 @@ class Rankings extends Component {
     const girls = this.getChildRankings(allScores, 'GIRL');
     return (
       <div>
-        <h1 className="rankings">Rankings of Students</h1>
+        <h1 className="rankings-header">Rankings of Students</h1>
         <div>
           <h2 className="rankings">Boy Rankings</h2>
           <div>

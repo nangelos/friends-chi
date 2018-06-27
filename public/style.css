@@ -241,6 +241,11 @@ input.break {
 
 .rankings {
   text-align: center;
+  background-color: gray;
+}
+
+.rankings-header {
+  text-align: center;
 }
 
 #navbar {
