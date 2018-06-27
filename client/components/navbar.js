@@ -1,37 +1,56 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../store'
+import styled from 'styled-components'
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1 id="navbar-header">Friends of the Children</h1>
-    <nav id="navbar">
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home" >Home</Link>
-          <Link to="/notes"> New Note</Link>
-          <Link to="/children">Search Notes</Link>
-          <Link to="/scoring">Child Scoring</Link>
-          <Link to="/rankings">Rankings</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-          </div>
-        )}
-    </nav>
-    <hr />
-  </div>
-)
+const Tab = styled.div`
+// text-decoration: ${p => p.active ? 'underline' : 'none'};
+// color: ${p => p.active ? 'black' : 'white'};
+border-radius: 15px 15px;
+background: ${p => p.active ? 'rgb(186, 207, 242)' : 'rgb(30, 144, 255)'};
+}
+`
+const navLinks = [{ link: 'home', text: 'Home' }, { link: 'notes', text: 'New Note' }, { link: 'children', text: 'Search Notes' }, { link: 'scoring', text: 'Child Scoring' }, { link: 'rankings', text: 'Rankings' }];
 
+
+class Navbar extends Component {
+  state = {
+    active: 'notes'
+  }
+
+  render() {
+    const { handleClick, isLoggedIn } = this.props;
+    const { active } = this.state;
+    return (
+      <div>
+        <h1 id="navbar-header">Friends of the Children</h1>
+        <nav /*id="navbar"*/>
+          {isLoggedIn ? (
+            <div id="navbar">
+              {/* The navbar will show these links after you log in */}
+              {
+                navLinks.map(tab => <Tab key={tab.link} onClick={() => this.setState({ active: tab.link })} active={active === tab.link}><Link to={'/' + tab.link}>{tab.text}</Link></Tab>)
+              }
+              <a href="#" onClick={handleClick}>
+                Logout
+                </a>
+            </div>
+          ) : (
+              <div>
+                {/* The navbar will show these links before you log in */}
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Sign Up</Link>
+              </div>
+            )}
+        </nav>
+        <hr />
+      </div>
+    )
+
+  }
+}
 
 
 /**

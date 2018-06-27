@@ -19,7 +19,7 @@ nav a {
   background-color: rgb(186, 207, 242);
   color: black;
   text-decoration: underline;
-  /* border-radius: 15px; */
+  border-radius: 15px;
 }
 
 input {
@@ -247,6 +247,8 @@ input.break {
   background-color: rgb(30, 144, 255);
   color: white;
   border-radius: 15px;
+  display: inline-flex;
+  width: 100%;
 }
 
 #navbar:hover {
