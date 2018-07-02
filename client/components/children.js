@@ -5,7 +5,8 @@ import { fetchAllData, fetchSelectData } from '../store';
 class ChildComponent extends Component {
 
   state = {
-    searchBar: ''
+    searchBar: '',
+    year: 2018
   }
 
   childRiskFactors = [
@@ -40,6 +41,11 @@ class ChildComponent extends Component {
     this.setState({ searchBar: value })
   }
 
+  handleTextboxChange = (evt) => {
+    let { name, value } = evt.target
+    this.setState({ [name]: value })
+  }
+
   componentDidMount() {
     const { getAllData } = this.props;
     getAllData()
@@ -48,11 +54,13 @@ class ChildComponent extends Component {
   render() {
     const { allData, selectedData } = this.props.state.data;
     const inputVaue = this.state.searchBar.toLowerCase();
-    const filteredChildren = allData.slice().reverse().filter(child => {
-      return (child.childInitials.toLowerCase().match(inputVaue) ||
-        child.school.toLowerCase().match(inputVaue)
-      )
-    })
+    const filteredChildren = allData.slice().reverse()
+      .filter(student => student.date.slice(0, 4) == this.state.year)
+      .filter(child => {
+        return (child.childInitials.toLowerCase().match(inputVaue) ||
+          child.school.toLowerCase().match(inputVaue)
+        )
+      })
     return (
       <div>
         <h1>Welcome to the Child Notes Page</h1>
@@ -63,6 +71,10 @@ class ChildComponent extends Component {
             placeholder="Search by School or Child..."
             onChange={this.handleChange}
             id="searchbar" />
+          <select name="year" onChange={this.handleTextboxChange}>
+            <option value={2018}>2018</option>
+            <option value={2019}>2019</option>
+          </select>
         </form>
         <div>
           {
