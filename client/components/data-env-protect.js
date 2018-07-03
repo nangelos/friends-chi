@@ -23,7 +23,7 @@ class EnvProtect extends Component {
 
   render() {
     return (
-      <div>
+      <div className="note-half">
         <h2>Environment Protective Factors Observed</h2>
         <div className="line">
           <input type="checkbox" name="goodCaregiver" onChange={this.props.handleCheckboxChange} />

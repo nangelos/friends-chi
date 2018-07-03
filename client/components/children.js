@@ -55,7 +55,7 @@ class ChildComponent extends Component {
     const { allData, selectedData } = this.props.state.data;
     const inputVaue = this.state.searchBar.toLowerCase();
     const filteredChildren = allData.slice().reverse()
-      .filter(student => student.date.slice(0, 4) == this.state.year)
+      .filter(student => Number(student.date.slice(0, 4)) === Number(this.state.year))
       .filter(child => {
         return (child.childInitials.toLowerCase().match(inputVaue) ||
           child.school.toLowerCase().match(inputVaue)

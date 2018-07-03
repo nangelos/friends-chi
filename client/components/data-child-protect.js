@@ -34,7 +34,7 @@ class ChildProtect extends Component {
 
   render() {
     return (
-      <div>
+      <div className="note-half">
         <h2>Child Protective Factors Observed</h2>
         <div className="line">
           <input type="checkbox" name="intelligent" onChange={this.props.handleCheckboxChange} />

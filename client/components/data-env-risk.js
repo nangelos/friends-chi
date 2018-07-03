@@ -53,7 +53,7 @@ class EnvRisk extends Component {
 
   render() {
     return (
-      <div>
+      <div className="note-half">
         <h2>Environment Risk Factors Observed</h2>
         <div className="line">
           <input type="checkbox" name="singleParent" onChange={this.props.handleCheckboxChange} />

@@ -280,3 +280,7 @@ input.break {
 #search-component {
   margin-left: 20px;
 }
+
+.note-half {
+  width: 50%;
+}
