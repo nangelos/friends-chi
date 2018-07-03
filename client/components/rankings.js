@@ -27,7 +27,7 @@ class Rankings extends Component {
     const girls = this.getChildRankings(allScores, 'GIRL');
     return (
       <div>
-        <h1 className="rankings-header">Rankings of Students</h1>
+        <h1 className="rankings-header">Student Rankings</h1>
         <div>
           <h2 className="rankings">Boy Rankings</h2>
           <div>
@@ -36,10 +36,16 @@ class Rankings extends Component {
               boys.map((child, idx) => {
                 return (
                   <div key={child.id} className="ranking-element" >
-                    <h3 className="ranking-number">{idx + 1}.</h3>
-                    <h3 className="ranking-name">Name: {child.childName}</h3>
-                    <h3 className="ranking-school">School: {child.school}</h3>
-                    <h3 className="ranking-score">Total Score: {child.totalScore}</h3>
+                    <div className="ranking-wide">
+                      <h3 className="ranking-number">{idx + 1}.</h3>
+                      <h3 className="ranking-name">Name: {child.childName}</h3>
+                    </div>
+                    <div className="ranking-thin">
+                      <h3 className="ranking-school">School: {child.school}</h3>
+                    </div>
+                    <div className="ranking-thin">
+                      <h3 className="ranking-score">Total Score: {child.totalScore}</h3>
+                    </div>
                   </div>
                 )
               })
@@ -54,10 +60,16 @@ class Rankings extends Component {
               girls.map((child, idx) => {
                 return (
                   <div key={child.id} className="ranking-element" >
-                    <h3 className="ranking-number">{idx + 1}.</h3>
-                    <h3 className="ranking-name">Name: {child.childName}</h3>
-                    <h3 className="ranking-school">School: {child.school}</h3>
-                    <h3 className="ranking-score">Total Score: {child.totalScore}</h3>
+                    <div className="ranking-wide">
+                      <h3 className="ranking-number">{idx + 1}.</h3>
+                      <h3 className="ranking-name">Name: {child.childName}</h3>
+                    </div>
+                    <div className="ranking-thin">
+                      <h3 className="ranking-school">School: {child.school}</h3>
+                    </div>
+                    <div className="ranking-thin">
+                      <h3 className="ranking-score">Total Score: {child.totalScore}</h3>
+                    </div>
                   </div>
                 )
               })
