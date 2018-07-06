@@ -6,11 +6,12 @@ import { connect } from 'react-redux'
  * COMPONENT
  */
 export const UserHome = (props) => {
-  const { email } = props;
+  const { email, username } = props;
   let name = email.slice(0, email.search('@'))
     .split('')
   name[0] = name[0].toUpperCase()
   name = name.join('');
+  if (username) { name = username }
 
   return (
     <div>
@@ -28,7 +29,8 @@ export const UserHome = (props) => {
  */
 const mapState = (state) => {
   return {
-    email: state.user.email
+    email: state.user.email,
+    username: state.user.username
   }
 }
 
