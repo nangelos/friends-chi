@@ -53,6 +53,7 @@ form div {
 .factor-details {
   margin-left: 5px;
   width: 20em;
+  min-width: 20em;
   position: relative;
   right: 0px;
   justify-content: space-between;
